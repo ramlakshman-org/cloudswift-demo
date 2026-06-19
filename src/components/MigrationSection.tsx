@@ -16,7 +16,7 @@ export function MigrationSection() {
               {MIGRATION.body}
             </p>
             <div className="mt-6">
-              <CtaButton href="#" variant="primary">
+              <CtaButton href="/about" variant="primary">
                 {MIGRATION.cta}
               </CtaButton>
             </div>
@@ -24,9 +24,10 @@ export function MigrationSection() {
           <div className="relative h-[260px] w-full">
             <Image
               src={MIGRATION.image}
-              alt="VM Migration Liftoff Kit"
+              alt=""
+              aria-hidden
               fill
-              className="rounded-xl object-cover"
+              className="rounded-xl object-contain"
             />
           </div>
         </Reveal>

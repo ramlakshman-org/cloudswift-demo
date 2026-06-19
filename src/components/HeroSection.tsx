@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CtaButton } from "@/components/CtaButton";
-import { HeroIllustration } from "@/components/HeroIllustration";
 import { HERO } from "@/lib/site-content";
 
 export function HeroSection() {
@@ -26,14 +25,14 @@ export function HeroSection() {
             {HERO.body}
           </p>
           <div className="mt-8">
-            <CtaButton href="#" variant="primary" className="px-7 py-3.5">
+            <CtaButton href="/get-started" variant="primary" className="px-7 py-3.5">
               {HERO.cta}
             </CtaButton>
           </div>
         </div>
 
         {/* Illustration */}
-        <div className="relative h-[380px] w-full lg:h-[460px]">
+        <div className="relative h-[320px] w-full lg:h-[440px]">
           <Image
             src={HERO.creasePattern}
             alt=""
@@ -42,7 +41,23 @@ export function HeroSection() {
             className="absolute left-2 top-1/2 -translate-y-1/2 opacity-60"
             aria-hidden
           />
-          <HeroIllustration />
+          <Image
+            src={HERO.bgPattern}
+            alt=""
+            aria-hidden
+            fill
+            priority
+            className="object-contain object-right"
+          />
+          {/* Colorful stacked-hexagon tower */}
+          <Image
+            src={HERO.hexStack}
+            alt="AI infrastructure stack illustration"
+            width={163}
+            height={320}
+            priority
+            className="absolute right-[24%] top-1/2 z-10 h-[78%] w-auto -translate-y-1/2 drop-shadow-[0_12px_24px_rgba(1,33,33,0.25)]"
+          />
         </div>
       </div>
     </section>

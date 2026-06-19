@@ -3,6 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 
 export interface Feature {
+  id?: string;
   icon?: ReactNode;
   title: string;
   body: string;
@@ -54,8 +55,9 @@ export function FeatureGrid({ heading, subheading, features, cols = 3, dark }: F
           {features.map((f, i) => (
             <Reveal
               key={i}
+              id={f.id}
               delay={i * 80}
-              className={cn("rounded-2xl p-8", cardBg)}
+              className={cn("rounded-2xl p-8 scroll-mt-24", cardBg)}
             >
               {f.icon && (
                 <div className={cn("mb-5 [&>svg]:size-7 [&>svg]:stroke-[1.5]", f.accent ? accentColor[f.accent] : "text-teal")}>

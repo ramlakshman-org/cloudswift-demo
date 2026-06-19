@@ -12,16 +12,19 @@ export function Reveal({
   className,
   delay = 0,
   as: Tag = "div",
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   as?: React.ElementType;
+  id?: string;
 }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
   return (
     <Tag
       ref={ref}
+      id={id}
       className={cn("reveal", visible && "is-visible", className)}
       style={delay ? { animationDelay: `${delay}ms` } : undefined}
     >
