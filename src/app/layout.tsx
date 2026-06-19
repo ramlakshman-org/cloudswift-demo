@@ -86,12 +86,21 @@ export const metadata: Metadata = {
     siteName: "CloudSwift",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "https://oncloudswift.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "CloudSwift — Cloud Managed Services & Microsoft Solutions India",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cloud Managed Services & Microsoft Solutions India | CloudSwift",
     description:
       "CloudSwift helps businesses build a secure, cloud-first foundation. Azure migration, M365 deployment, Dynamics 365, Power BI, and 24/7 managed cloud services across India.",
+    images: ["https://oncloudswift.com/opengraph-image"],
   },
   robots: {
     index: true,

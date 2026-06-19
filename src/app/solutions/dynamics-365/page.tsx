@@ -8,11 +8,16 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Microsoft Dynamics 365 Implementation India | CloudSwift";
+const description = "CloudSwift implements and supports Dynamics 365 ERP and CRM — Finance, Supply Chain, Sales, Customer Service. End-to-end D365 partner in Bengaluru & Mumbai.";
 
 export const metadata: Metadata = {
-  title: "Microsoft Dynamics 365 Implementation India | CloudSwift",
-  description: "CloudSwift implements and supports Dynamics 365 ERP and CRM — Finance, Supply Chain, Sales, Customer Service. End-to-end D365 partner in Bengaluru & Mumbai.",
+  title,
+  description,
   alternates: { canonical: "/solutions/dynamics-365" },
+  ...pageSocial(title, description, "/solutions/dynamics-365"),
 };
 
 const features = [

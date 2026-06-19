@@ -9,11 +9,16 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Managed Cloud Services India | CloudSwift";
+const description = "CloudSwift manages public, private, hybrid, and Oracle Cloud environments for businesses across India. Silver, Gold & Platinum plans starting at $29.99/month.";
 
 export const metadata: Metadata = {
-  title: "Managed Cloud Services India | CloudSwift",
-  description: "CloudSwift manages public, private, hybrid, and Oracle Cloud environments for businesses across India. Silver, Gold & Platinum plans starting at $29.99/month.",
+  title,
+  description,
   alternates: { canonical: "/managed-cloud" },
+  ...pageSocial(title, description, "/managed-cloud"),
 };
 
 const tiers = [

@@ -4,18 +4,51 @@ import Link from "next/link";
 import { Award, Lock, KeyRound, Server, ClipboardCheck, AlertTriangle } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { MainCtaSection } from "@/components/MainCtaSection";
+import { FaqSection } from "@/components/FaqSection";
+import { BreadcrumbSchema, FaqSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Cloud & IT Security | ISO 9001 Certified | CloudSwift";
+const description = "CloudSwift secures your cloud and IT environment with ISO 9001-2015 certified processes, Azure-grade infrastructure security, encryption, and 24/7 monitoring.";
 
 export const metadata: Metadata = {
-  title: "Security | CloudSwift",
-  description: "How CloudSwift protects your data and maintains enterprise-grade security standards.",
+  title,
+  description,
   alternates: { canonical: "/security" },
+  ...pageSocial(title, description, "/security"),
 };
 
-const practices: { icon: ReactNode; heading: string; body: string }[] = [
+const faqs = [
+  {
+    q: "Is CloudSwift ISO certified for security and quality management?",
+    a: "Yes. CloudSwift holds ISO 9001-2015 certification, reflecting our commitment to quality management systems, consistent delivery, and continuous improvement across every engagement.",
+  },
+  {
+    q: "How does CloudSwift encrypt customer data?",
+    a: "All data transmitted between your browser and our services is encrypted using TLS 1.2 or higher. Data at rest is encrypted using industry-standard AES-256 encryption.",
+  },
+  {
+    q: "What access controls does CloudSwift enforce?",
+    a: "CloudSwift enforces strict role-based access controls and multi-factor authentication across all internal systems. Access to client data is limited to authorised personnel only.",
+  },
+  {
+    q: "How do I report a security vulnerability to CloudSwift?",
+    a: "Email support@oncloudswift.com with details of the potential vulnerability. CloudSwift takes all reports seriously and responds within 24 hours.",
+  },
+];
+
+const practices: { icon: ReactNode; heading: string; body: ReactNode }[] = [
   {
     icon: <Award size={28} strokeWidth={1.5} />,
     heading: "ISO 9001-2015 certified",
-    body: "CloudSwift holds ISO 9001-2015 certification, reflecting our commitment to quality management systems, consistent delivery, and continuous improvement across every engagement.",
+    body: (
+      <>
+        CloudSwift holds ISO 9001-2015 certification, reflecting our commitment to quality
+        management systems, consistent delivery, and continuous improvement across every
+        engagement. Read more <Link href="/about" className="text-teal underline hover:text-teal-dark">about CloudSwift</Link>.
+      </>
+    ),
   },
   {
     icon: <Lock size={28} strokeWidth={1.5} />,
@@ -30,7 +63,13 @@ const practices: { icon: ReactNode; heading: string; body: string }[] = [
   {
     icon: <Server size={28} strokeWidth={1.5} />,
     heading: "Infrastructure security",
-    body: "Our infrastructure runs on Microsoft Azure with enterprise-grade security controls including DDoS protection, network segmentation, Web Application Firewall, and continuous threat monitoring.",
+    body: (
+      <>
+        Our infrastructure runs on <Link href="/solutions/azure" className="text-teal underline hover:text-teal-dark">Microsoft Azure</Link> with
+        enterprise-grade security controls including DDoS protection, network segmentation,
+        Web Application Firewall, and continuous threat monitoring.
+      </>
+    ),
   },
   {
     icon: <ClipboardCheck size={28} strokeWidth={1.5} />,
@@ -47,6 +86,8 @@ const practices: { icon: ReactNode; heading: string; body: string }[] = [
 export default function SecurityPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Home", href: "/" }, { name: "Security", href: "/security" }]} />
+      <FaqSchema items={faqs} />
       <Navbar />
       <main className="flex-1">
         <section className="bg-teal py-20 text-white">
@@ -89,6 +130,9 @@ export default function SecurityPage() {
             </div>
           </div>
         </section>
+
+        <FaqSection heading="Security — your questions answered" items={faqs} />
+        <MainCtaSection />
       </main>
       <Footer />
     </>

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy | CloudSwift",
   description: "How CloudSwift collects, uses, and protects your personal data.",
+  alternates: { canonical: "/privacy" },
 };
 
 const sections = [

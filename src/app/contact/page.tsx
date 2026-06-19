@@ -3,11 +3,16 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { BookingForm } from "@/components/BookingForm";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Contact CloudSwift | Cloud Consulting India";
+const description = "Get in touch with CloudSwift for cloud consulting, Microsoft Azure, managed services, or IT support. Offices in Bengaluru (HQ) and Mumbai. Call +91-9606246099.";
 
 export const metadata: Metadata = {
-  title: "Contact CloudSwift | Cloud Consulting India",
-  description: "Get in touch with CloudSwift for cloud consulting, Microsoft Azure, managed services, or IT support. Offices in Bengaluru (HQ) and Mumbai. Call +91-9606246099.",
+  title,
+  description,
   alternates: { canonical: "/contact" },
+  ...pageSocial(title, description, "/contact"),
 };
 
 const offices = [
@@ -63,7 +68,7 @@ export default function ContactPage() {
                 </Reveal>
 
                 <Reveal delay={120}>
-                  <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-gold">Our offices</h3>
+                  <h2 className="mb-4 text-sm font-medium uppercase tracking-widest text-gold">Our offices</h2>
                   <div className="space-y-6">
                     {offices.map((o) => (
                       <div key={o.city} className="flex items-start gap-4">

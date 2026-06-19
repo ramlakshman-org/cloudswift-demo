@@ -9,11 +9,16 @@ import { MainCtaSection } from "@/components/MainCtaSection";
 import { Reveal } from "@/components/Reveal";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Microsoft Azure Managed Services India | CloudSwift";
+const description = "CloudSwift delivers end-to-end Microsoft Azure services — cloud migration, VDI, Azure security, and 24/7 managed support. Bengaluru & Mumbai based Azure partner.";
 
 export const metadata: Metadata = {
-  title: "Microsoft Azure Managed Services India | CloudSwift",
-  description: "CloudSwift delivers end-to-end Microsoft Azure services — cloud migration, VDI, Azure security, and 24/7 managed support. Bengaluru & Mumbai based Azure partner.",
+  title,
+  description,
   alternates: { canonical: "/solutions/azure" },
+  ...pageSocial(title, description, "/solutions/azure"),
 };
 
 const features = [

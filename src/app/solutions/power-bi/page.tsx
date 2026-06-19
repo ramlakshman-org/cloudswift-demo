@@ -8,11 +8,16 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Power BI Consulting & Data Analytics India | CloudSwift";
+const description = "CloudSwift builds Power BI dashboards, Azure data services, and AI-powered self-service analytics. Expert Power BI consulting for businesses across India.";
 
 export const metadata: Metadata = {
-  title: "Power BI Consulting & Data Analytics India | CloudSwift",
-  description: "CloudSwift builds Power BI dashboards, Azure data services, and AI-powered self-service analytics. Expert Power BI consulting for businesses across India.",
+  title,
+  description,
   alternates: { canonical: "/solutions/power-bi" },
+  ...pageSocial(title, description, "/solutions/power-bi"),
 };
 
 const features = [

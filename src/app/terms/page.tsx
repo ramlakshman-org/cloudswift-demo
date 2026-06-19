@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Terms of Use | CloudSwift",
   description: "Terms and conditions governing use of the CloudSwift website and services.",
+  alternates: { canonical: "/terms" },
 };
 
 const sections = [

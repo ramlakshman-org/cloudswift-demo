@@ -7,11 +7,16 @@ import { Reveal } from "@/components/Reveal";
 import { CtaButton } from "@/components/CtaButton";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "About CloudSwift | ISO 9001 Certified Cloud Partner India";
+const description = "CloudSwift is an ISO 9001-2015 certified cloud and IT managed services company headquartered in Bengaluru. Microsoft Azure Partner serving businesses across India.";
 
 export const metadata: Metadata = {
-  title: "About CloudSwift | ISO 9001-2015 Certified Cloud Partner India",
-  description: "CloudSwift is an ISO 9001-2015 certified cloud and IT managed services company headquartered in Bengaluru. Microsoft Azure Partner serving businesses across India.",
+  title,
+  description,
   alternates: { canonical: "/about" },
+  ...pageSocial(title, description, "/about"),
 };
 
 const values: { icon: ReactNode; title: string; desc: string }[] = [

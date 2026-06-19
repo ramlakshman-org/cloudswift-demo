@@ -4,11 +4,16 @@ import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { BreadcrumbSchema, ServiceSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "IT Managed Services | CloudSwift India";
+const description = "CloudSwift delivers end-user support, systems and network management, cloud BCP & DR, and advisory services across India. Based in Bengaluru and Mumbai.";
 
 export const metadata: Metadata = {
-  title: "IT Managed Services | CloudSwift India",
-  description: "CloudSwift delivers end-user support, systems and network management, cloud BCP & DR, and advisory services across India. Based in Bengaluru and Mumbai.",
+  title,
+  description,
   alternates: { canonical: "/services" },
+  ...pageSocial(title, description, "/services"),
 };
 
 const serviceGroups = [

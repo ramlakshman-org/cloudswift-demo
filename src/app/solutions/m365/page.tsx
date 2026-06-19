@@ -8,11 +8,16 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { MainCtaSection } from "@/components/MainCtaSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Microsoft 365 Modern Workplace Solutions India | CloudSwift";
+const description = "CloudSwift deploys and manages Microsoft 365 — Teams, SharePoint, Exchange, security hardening, and tenant migrations. M365 expertise across India.";
 
 export const metadata: Metadata = {
-  title: "Microsoft 365 Modern Workplace Solutions India | CloudSwift",
-  description: "CloudSwift deploys and manages Microsoft 365 — Teams, SharePoint, Exchange, security hardening, and tenant migrations. M365 expertise across India.",
+  title,
+  description,
   alternates: { canonical: "/solutions/m365" },
+  ...pageSocial(title, description, "/solutions/m365"),
 };
 
 const features = [

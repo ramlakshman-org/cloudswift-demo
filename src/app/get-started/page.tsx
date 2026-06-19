@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import { pageSocial } from "@/lib/seo";
+
+const title = "Book a Free Cloud Consultation | CloudSwift India";
+const description = "Schedule a free consultation with a CloudSwift cloud expert. Walk through your infrastructure challenges and get a tailored plan — no commitment required.";
 
 export const metadata: Metadata = {
-  title: "Book a Consultation | CloudSwift",
-  description: "Schedule a free consultation with a CloudSwift cloud expert. Walk through your infrastructure challenges and get a tailored plan — no commitment required.",
+  title,
+  description,
+  alternates: { canonical: "/get-started" },
+  ...pageSocial(title, description, "/get-started"),
 };
 
 import { Navbar } from "@/components/Navbar";
@@ -47,7 +53,7 @@ export default function GetStartedPage() {
                 </Reveal>
 
                 <Reveal delay={100}>
-                  <h3 className="mb-4 text-base font-medium text-ink">What you&apos;ll get:</h3>
+                  <h2 className="mb-4 text-base font-medium text-ink">What you&apos;ll get:</h2>
                   <ul className="space-y-4">
                     {benefits.map((b, i) => (
                       <li key={i} className="flex items-start gap-3 text-base leading-relaxed text-ink/75">

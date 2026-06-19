@@ -17,9 +17,9 @@ import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema } from "@/components/SchemaMarkup";
 
 export const metadata: Metadata = {
-  title: "Cloud Managed Services & Microsoft Azure Partner India | CloudSwift",
+  title: "Cloud Managed Services & Azure Partner India | CloudSwift",
   description:
-    "CloudSwift is an ISO 9001-2015 certified cloud managed services company. Azure migration, Microsoft 365, Dynamics 365, Power BI, and 24/7 managed cloud support across India.",
+    "ISO 9001-2015 certified cloud managed services company. Azure migration, Microsoft 365, Dynamics 365, Power BI, and 24/7 managed cloud support across India.",
   alternates: { canonical: "/" },
 };
 
