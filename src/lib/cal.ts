@@ -1,8 +1,9 @@
-// TODO: replace with the real Cal.com username/event-slug once the
-// "Free Cloud Cost & Risk Assessment" event type is created.
-export const CAL_LINK = "cloudswift/cloud-assessment";
+export const CAL_NAMESPACE = "free-cloud-cost-risk-assessment";
+export const CAL_LINK = "team/ram-rishikesh-7hqt9a-team/free-cloud-cost-risk-assessment";
 
 export const CAL_UI_CONFIG = {
   theme: "light" as const,
   styles: { branding: { brandColor: "#e05c20" } },
+  hideEventTypeDetails: false,
+  layout: "month_view" as const,
 };
