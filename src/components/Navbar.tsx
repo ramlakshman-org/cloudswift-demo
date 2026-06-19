@@ -78,7 +78,7 @@ function SimplePanel({ data }: { data: NavDropdownData }) {
       {columns.map((col, ci) => (
         <div key={ci} className="min-w-[190px] px-4 py-4">
           {col.heading && (
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-ink/45">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-widest text-ink/65">
               {col.heading}
             </p>
           )}
@@ -104,7 +104,7 @@ function SidebarSection({ section }: { section: NavSubSection }) {
     <div className="flex flex-col gap-1">
       {section.heading && (
         <div className="mb-1">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-ink/50">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-ink/65">
             {section.heading}
           </p>
           {section.headingDesc && (
