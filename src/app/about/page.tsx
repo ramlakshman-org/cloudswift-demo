@@ -83,7 +83,11 @@ export default function AboutPage() {
                   We help organizations make data-driven and cost-saving decisions while navigating digital technology. CloudSwift specifically assists customers build the commercial and technical foundation for a successful and secure cloud-first, digital transformation journey.
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-ink/70">
-                  We maintain strong strategic relationships with all leading technology vendors worldwide, and our ISO 9001-2015 certification reflects our commitment to quality management and consistent delivery.
+                  We maintain strong strategic relationships with all leading technology vendors worldwide, and our{" "}
+                  <a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank" rel="noopener noreferrer" className="text-teal underline hover:text-teal-dark">
+                    ISO 9001-2015
+                  </a>{" "}
+                  certification reflects our commitment to quality management and consistent delivery.
                 </p>
               </Reveal>
               <Reveal delay={100}>

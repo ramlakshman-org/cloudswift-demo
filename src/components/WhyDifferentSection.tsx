@@ -160,7 +160,7 @@ export function WhyDifferentSection() {
             </Reveal>
           ))}
           <div className="mt-4">
-            <CtaButton href="/get-started" variant="primary">
+            <CtaButton href="/assessment" variant="primary">
               {WHY_DIFFERENT.cta}
             </CtaButton>
           </div>

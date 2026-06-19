@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { BookingForm } from "@/components/BookingForm";
+import { BreadcrumbSchema } from "@/components/SchemaMarkup";
 import { pageSocial } from "@/lib/seo";
 
 const title = "Contact CloudSwift | Cloud Consulting India";
@@ -34,6 +35,7 @@ const offices = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Home", href: "/" }, { name: "Contact", href: "/contact" }]} />
       <Navbar />
       <main className="flex-1">
         <section className="bg-ink py-20 text-white">

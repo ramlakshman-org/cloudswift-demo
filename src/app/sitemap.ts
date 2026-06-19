@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/managed-cloud", priority: 0.85, changeFrequency: "weekly" as const },
     { url: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
     { url: "/assessment", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/get-started", priority: 0.8, changeFrequency: "monthly" as const },
     { url: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
     { url: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
     { url: "/security", priority: 0.5, changeFrequency: "yearly" as const },

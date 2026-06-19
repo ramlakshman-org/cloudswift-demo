@@ -16,7 +16,7 @@ export function VMBannerSection() {
             </p>
           </div>
           <CtaButton
-            href="/get-started"
+            href="/assessment"
             variant="outline"
             className="shrink-0 border-white text-white hover:bg-white hover:text-rust"
           >

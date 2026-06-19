@@ -44,7 +44,11 @@ const practices: { icon: ReactNode; heading: string; body: ReactNode }[] = [
     heading: "ISO 9001-2015 certified",
     body: (
       <>
-        CloudSwift holds ISO 9001-2015 certification, reflecting our commitment to quality
+        CloudSwift holds{" "}
+        <a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank" rel="noopener noreferrer" className="text-teal underline hover:text-teal-dark">
+          ISO 9001-2015
+        </a>{" "}
+        certification, reflecting our commitment to quality
         management systems, consistent delivery, and continuous improvement across every
         engagement. Read more <Link href="/about" className="text-teal underline hover:text-teal-dark">about CloudSwift</Link>.
       </>

@@ -46,7 +46,7 @@ const homeFaqs = [
   },
   {
     q: "How do I get started with CloudSwift?",
-    a: "You can book a free consultation by contacting us through our website. Our team will assess your current infrastructure, understand your goals, and propose the right cloud strategy — whether that's migration, managed services, or a specific Microsoft solution.",
+    a: "Book a free 30-minute Cloud Cost & Risk Assessment at oncloudswift.com/assessment. A CloudSwift cloud architect will walk through your current environment, budget risk areas, security exposure, and a realistic timeline — whether that's migration, managed services, or a specific Microsoft solution.",
   },
 ];
 

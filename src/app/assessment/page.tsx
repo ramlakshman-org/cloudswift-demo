@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { CalEmbed } from "@/components/CalEmbed";
-import { BreadcrumbSchema } from "@/components/SchemaMarkup";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/SchemaMarkup";
 import { pageSocial } from "@/lib/seo";
 
 const title = "Free Cloud Cost & Risk Assessment | CloudSwift";
@@ -29,6 +29,12 @@ export default function AssessmentPage() {
   return (
     <>
       <BreadcrumbSchema items={[{ name: "Home", href: "/" }, { name: "Free Assessment", href: "/assessment" }]} />
+      <ServiceSchema
+        name="Free Cloud Cost & Risk Assessment"
+        description="A free 30-minute consultation with a CloudSwift cloud architect covering current environment, budget risk areas, security exposure, and migration timeline."
+        url="/assessment"
+        offers={[{ name: "Free Cloud Cost & Risk Assessment", price: "0" }]}
+      />
       <Navbar />
       <main className="flex-1">
         <PageHero
