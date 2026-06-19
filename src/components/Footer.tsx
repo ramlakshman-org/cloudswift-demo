@@ -17,7 +17,7 @@ export function Footer() {
           </div>
 
           {FOOTER_COLUMNS.map((col) => (
-            <div key={col.heading}>
+            <div key={col.heading} className="min-w-0">
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">
                 {col.heading}
               </h3>
@@ -26,7 +26,7 @@ export function Footer() {
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="text-sm text-white/65 transition-colors hover:text-gold"
+                      className="block break-words text-sm text-white/65 transition-colors hover:text-gold"
                     >
                       {l.label}
                     </Link>

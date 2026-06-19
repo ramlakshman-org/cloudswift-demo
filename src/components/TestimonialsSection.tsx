@@ -77,11 +77,16 @@ export function TestimonialsSection() {
               key={i}
               onClick={() => go(i)}
               aria-label={`Show testimonial ${i + 1}`}
-              className={cn(
-                "h-2 rounded-full transition-all",
-                i === active ? "w-8 bg-gold" : "w-2 bg-white/30 hover:bg-white/50"
-              )}
-            />
+              className="relative flex h-2 items-center"
+            >
+              <span className="absolute -inset-2" aria-hidden />
+              <span
+                className={cn(
+                  "h-2 rounded-full transition-all",
+                  i === active ? "w-8 bg-gold" : "w-2 bg-white/30 hover:bg-white/50"
+                )}
+              />
+            </button>
           ))}
         </div>
       </div>

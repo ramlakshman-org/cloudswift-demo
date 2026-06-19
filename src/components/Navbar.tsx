@@ -377,6 +377,7 @@ function MobileNavItem({ entry, onClose }: { entry: NavEntry; onClose: () => voi
     <div className="border-b border-ink/8">
       <button
         onClick={() => setExpanded((v) => !v)}
+        aria-expanded={expanded}
         className="flex w-full items-center justify-between px-3 py-3 text-sm font-medium text-ink"
       >
         {entry.label}
@@ -523,7 +524,7 @@ export function Navbar() {
 
         {/* ── Mobile hamburger ──────────────────────────────────────────── */}
         <button
-          className="xl:hidden text-ink ml-auto"
+          className="xl:hidden text-ink ml-auto -mr-2.5 flex h-11 w-11 items-center justify-center"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
