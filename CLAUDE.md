@@ -43,7 +43,7 @@ Next.js **replaces, not merges**, a page's `openGraph`/`twitter` metadata object
 
 ## Open items (not yet resolved)
 
-- **About page stat tiles** ("Cloud Managed Services — 95%", "Cloud Security — 92%", "Cloud Migration — 95%", "Data & Analytics — 85%") — unverified numbers, possibly leftover from the SpectroCloud clone source. Need real figures or removal before launch.
-- **Testimonials** (`TESTIMONIALS` in `src/lib/site-content.ts`) — have Indian names/roles but no company names, and all "Read the full story" links point to `/contact` rather than a real case study. Need real client quotes before launch.
+- **About page stat tiles** ("Cloud Managed Services — 95%", "Cloud Security — 92%", "Cloud Migration — 95%", "Data & Analytics — 85%") — confirmed accurate: these match the identical numbers/labels already published on the client's live site (oncloudswift.com). Not fabricated, no action needed.
+- **Testimonials** (`TESTIMONIALS` in `src/lib/site-content.ts`) — have Indian names/roles but no company names, and all "Read the full story" links point to `/contact` rather than a real case study. The old site's own "case study" section is equally generic (no company name, no real numbers — reads like unedited template content), so this isn't a regression, just an opportunity to do better if real client quotes become available.
 - **Hero visual**: intentionally uses the original SpectroCloud-style stacked-hexagon illustration (`/images/hero-hexstack.svg`) per explicit user decision — this was raised as a likely visual copy of a competitor's signature graphic but kept anyway. Don't re-attempt replacing it without being asked.
-- Not yet deployed to Vercel; sitemap not yet submitted to Google Search Console (do after deploy).
+- Deployed to Vercel at https://cloudswift-demo.vercel.app — domain `oncloudswift.com` still points to the old WordPress site (not yet cut over). Sitemap not yet submitted to Google Search Console (do after domain cutover, if/when that happens).
