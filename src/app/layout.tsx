@@ -12,7 +12,7 @@ const organizationSchema = {
       url: "https://oncloudswift.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://oncloudswift.com/seo/cloudswift-favicon.svg",
+        url: "https://oncloudswift.com/seo/icon-512.png",
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -30,7 +30,7 @@ const organizationSchema = {
       "@type": "LocalBusiness",
       "@id": "https://oncloudswift.com/#localbusiness",
       name: "CloudSwift",
-      image: "https://oncloudswift.com/seo/cloudswift-favicon.svg",
+      image: "https://oncloudswift.com/seo/icon-512.png",
       url: "https://oncloudswift.com",
       telephone: "+91-9071416809",
       email: "support@oncloudswift.com",
@@ -76,7 +76,11 @@ export const metadata: Metadata = {
   description:
     "CloudSwift is an ISO 9001-2015 certified cloud and IT managed services company. Microsoft Azure, Dynamics 365, M365, Power BI, and managed cloud — based in Bengaluru & Mumbai.",
   icons: {
-    icon: "/seo/cloudswift-favicon.svg",
+    icon: [
+      { url: "/seo/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/seo/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/seo/apple-touch-icon.png",
   },
   openGraph: {
     title: "Cloud Managed Services & Microsoft Solutions India | CloudSwift",
