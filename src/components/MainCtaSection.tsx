@@ -14,7 +14,7 @@ export function MainCtaSection() {
             {MAIN_CTA.body}
           </p>
           <div className="mt-8 flex justify-center">
-            <CtaButton href="/get-started" variant="primary" className="px-8 py-4">
+            <CtaButton href="/assessment" variant="primary" className="px-8 py-4">
               {MAIN_CTA.cta}
             </CtaButton>
           </div>

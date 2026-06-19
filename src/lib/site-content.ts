@@ -142,7 +142,7 @@ export const HERO = {
   eyebrow: "ISO 9001-2015 Certified · Microsoft Azure Partner",
   title: ["Expert Cloud & IT", "Managed Services"],
   body: "CloudSwift helps businesses across India build the commercial and technical foundation for a secure, cloud-first digital transformation — from Azure migration and Microsoft 365 to 24/7 managed cloud support.",
-  cta: "Book a free consultation",
+  cta: "Book Your Free Assessment",
   bgPattern: `${IMG}/69b24769f54646d072d97675_bg-img-rd.svg`,
   creasePattern: `${IMG}/69b00e92c91512818f044bb4_Crease-pattern.svg`,
   hexStack: `${IMG}/hero-hexstack.svg`,
@@ -212,7 +212,7 @@ export const WHY_DIFFERENT = {
       image: `${IMG}/69afea9edb6d1239cfc6fc0f_why-for-ai.svg`,
     },
   ],
-  cta: "Get in touch",
+  cta: "Book Your Free Assessment",
   bg: `${IMG}/67aca000f44356b8986ce49f_introducing-palette-bg.svg`,
 };
 
@@ -271,7 +271,7 @@ export const WHERE_CARDS: UseCaseCard[] = [
 export const VM_BANNER = {
   title: "Ready to modernize your IT infrastructure?",
   body: "Whether you're planning your first Azure migration, rolling out Microsoft 365, or looking for a reliable managed cloud partner — CloudSwift's certified experts are ready to help.",
-  cta: "Book a free consultation",
+  cta: "Book Your Free Assessment",
 };
 
 // ── Cloud partner ecosystem ───────────────────────────────────────────────────
@@ -334,7 +334,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const MAIN_CTA = {
   heading: "Start your cloud transformation today",
   body: "Talk to a CloudSwift expert about your infrastructure challenges. Azure migration, Microsoft 365 deployment, managed cloud, or Power BI — we'll find the right path for your business.",
-  cta: "Book a free consultation",
+  cta: "Book Your Free Assessment",
 };
 
 // ── Footer ───────────────────────────────────────────────────────────────────

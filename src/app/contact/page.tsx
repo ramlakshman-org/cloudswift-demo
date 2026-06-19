@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { BookingForm } from "@/components/BookingForm";
 import { pageSocial } from "@/lib/seo";
@@ -85,6 +86,12 @@ export default function ContactPage() {
 
               {/* Right: form */}
               <Reveal delay={100}>
+                <p className="mb-4 text-center text-sm text-white/70">
+                  Prefer to talk it through?{" "}
+                  <Link href="/assessment" className="font-medium text-gold hover:underline">
+                    Book a Free Assessment
+                  </Link>
+                </p>
                 <BookingForm />
               </Reveal>
             </div>

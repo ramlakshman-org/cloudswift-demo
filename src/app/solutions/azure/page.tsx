@@ -69,7 +69,7 @@ export default function AzurePage() {
           eyebrow="Microsoft Azure"
           title="Azure cloud services, done right"
           body="From architecture design and migration to security and ongoing managed support — CloudSwift's certified Azure experts help you get more from Microsoft's cloud platform."
-          cta={{ label: "Get in touch", href: "/contact" }}
+          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "All solutions", href: "/solutions/m365" }}
         />
         <FeatureGrid heading="Azure services we deliver" subheading="Capabilities" features={features} cols={3} />

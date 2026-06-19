@@ -25,7 +25,7 @@ export function HeroSection() {
             {HERO.body}
           </p>
           <div className="mt-8">
-            <CtaButton href="/get-started" variant="primary" className="px-7 py-3.5">
+            <CtaButton href="/assessment" variant="primary" className="px-7 py-3.5">
               {HERO.cta}
             </CtaButton>
           </div>

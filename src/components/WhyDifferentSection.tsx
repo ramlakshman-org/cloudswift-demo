@@ -114,7 +114,7 @@ export function WhyDifferentSection() {
             ))}
 
             <div className="mt-10">
-              <CtaButton href="/get-started" variant="primary">
+              <CtaButton href="/assessment" variant="primary">
                 {WHY_DIFFERENT.cta}
               </CtaButton>
             </div>

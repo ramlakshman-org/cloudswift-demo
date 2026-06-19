@@ -156,10 +156,10 @@ export default function ManagedCloudPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/contact"
+                    href="/assessment"
                     className="mt-8 block w-full rounded-[6px] border border-white/30 px-4 py-3 text-center text-sm font-medium text-white transition hover:border-white hover:bg-white/10"
                   >
-                    Get started
+                    Book Your Free Assessment
                   </Link>
                 </Reveal>
               ))}

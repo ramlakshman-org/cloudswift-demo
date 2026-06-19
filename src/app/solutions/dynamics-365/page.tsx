@@ -68,7 +68,7 @@ export default function Dynamics365Page() {
           eyebrow="Dynamics 365"
           title="Transform your business with Dynamics 365"
           body="CloudSwift implements and supports Microsoft Dynamics 365 ERP and CRM solutions — from initial discovery and configuration to data migration, integration, and post-go-live managed support."
-          cta={{ label: "Talk to a D365 expert", href: "/contact" }}
+          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "Explore Power BI", href: "/solutions/power-bi" }}
         />
         <FeatureGrid heading="Dynamics 365 services" subheading="What we deliver" features={features} cols={3} />
