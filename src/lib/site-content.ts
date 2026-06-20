@@ -45,6 +45,13 @@ export const NAV_LEFT: NavEntry[] = [
           { label: "Power BI", href: "/solutions/power-bi", desc: "Business intelligence, dashboards, and AI-powered analytics" },
         ],
       },
+      {
+        style: "cards",
+        links: [
+          { label: "Tenant & G-Suite Migration", href: "/solutions/tenant-migration", desc: "Tenant-to-tenant and Google Workspace migrations with zero data loss" },
+          { label: "Oracle Cloud", href: "/solutions/oracle-cloud", desc: "Oracle Cloud advisory, migrations, and managed IaaS/PaaS support" },
+        ],
+      },
     ],
     sidebar: {
       heading: "Quick links",
@@ -343,9 +350,9 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
   {
     heading: "Services",
     links: [
-      { label: "G-Suite Migration", href: "/services" },
+      { label: "G-Suite Migration", href: "/solutions/tenant-migration" },
       { label: "On-Prem to Cloud", href: "/services" },
-      { label: "Tenant Migration", href: "/services" },
+      { label: "Tenant Migration", href: "/solutions/tenant-migration" },
       { label: "Data Security Implementation", href: "/managed-cloud#security" },
       { label: "D365 Implementation", href: "/solutions/dynamics-365" },
       { label: "Microsoft SharePoint", href: "/solutions/m365" },
@@ -359,6 +366,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Dynamics 365", href: "/solutions/dynamics-365" },
       { label: "Microsoft 365", href: "/solutions/m365" },
       { label: "Power BI", href: "/solutions/power-bi" },
+      { label: "Oracle Cloud", href: "/solutions/oracle-cloud" },
     ],
   },
   {

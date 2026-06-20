@@ -2,9 +2,9 @@ import { describe, it, expect } from "vitest";
 import sitemap from "./sitemap";
 
 describe("sitemap", () => {
-  it("includes all 13 routes with absolute URLs under the production domain", () => {
+  it("includes all 15 routes with absolute URLs under the production domain", () => {
     const result = sitemap();
-    expect(result).toHaveLength(13);
+    expect(result).toHaveLength(15);
     for (const entry of result) {
       expect(entry.url.startsWith("https://oncloudswift.com")).toBe(true);
       expect(entry.lastModified).toBeInstanceOf(Date);

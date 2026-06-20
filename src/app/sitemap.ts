@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/solutions/dynamics-365", priority: 0.9, changeFrequency: "weekly" as const },
     { url: "/solutions/m365", priority: 0.9, changeFrequency: "weekly" as const },
     { url: "/solutions/power-bi", priority: 0.9, changeFrequency: "weekly" as const },
+    { url: "/solutions/tenant-migration", priority: 0.8, changeFrequency: "weekly" as const },
+    { url: "/solutions/oracle-cloud", priority: 0.8, changeFrequency: "weekly" as const },
     { url: "/services", priority: 0.85, changeFrequency: "monthly" as const },
     { url: "/managed-cloud", priority: 0.85, changeFrequency: "weekly" as const },
     { url: "/contact", priority: 0.8, changeFrequency: "monthly" as const },

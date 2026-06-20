@@ -1,7 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import ManagedCloudPage from "./page";
 
+// Footer's "Solutions" column now also links to "Oracle Cloud"; scope to
+// <main> to avoid ambiguous multi-match errors.
 describe("ManagedCloudPage", () => {
   beforeEach(() => {
     vi.useFakeTimers();
@@ -13,12 +15,13 @@ describe("ManagedCloudPage", () => {
 
   it("renders the hero, all 6 platform tiers, all 3 pricing plans, and FAQs", () => {
     const { unmount } = render(<ManagedCloudPage />);
-    expect(screen.getByRole("heading", { name: "Your cloud, expertly managed" })).toBeInTheDocument();
+    const main = within(screen.getByRole("main"));
+    expect(main.getByRole("heading", { name: "Your cloud, expertly managed" })).toBeInTheDocument();
     for (const tier of ["Public Cloud", "Private Cloud", "Hybrid Cloud", "Cloud Security", "Managed Data Centre", "Oracle Cloud"]) {
-      expect(screen.getByText(tier)).toBeInTheDocument();
+      expect(main.getByText(tier)).toBeInTheDocument();
     }
     for (const plan of ["Silver", "Gold", "Platinum"]) {
-      expect(screen.getByText(plan)).toBeInTheDocument();
+      expect(main.getByText(plan)).toBeInTheDocument();
     }
     expect(document.getElementById("security")).toBeInTheDocument();
     const bookButtons = screen.getAllByRole("link", { name: "Book Your Free Assessment" });
