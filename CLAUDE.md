@@ -15,8 +15,23 @@ npm run dev
 npm run build
 npm run lint
 npm run typecheck
-npm run check   # lint + typecheck + build
+npm run test            # vitest run
+npm run test:watch      # vitest (watch mode)
+npm run test:coverage   # vitest run --coverage
+npm run check           # lint + typecheck + build + test
 ```
+
+## Testing
+
+Vitest + React Testing Library + jsdom. Config in `vitest.config.ts`/`vitest.setup.ts`. Coverage thresholds are set to 100% (lines/branches/functions/statements) and currently pass exactly at 100% — `npm run test:coverage` fails loudly if a change drops below that.
+
+- `vitest.setup.ts` mocks `next/font/google` (real font loading needs the Next build pipeline) and provides a controllable `IntersectionObserver` mock (`globalThis.__ioInstances`) for `useReveal`/`Reveal` tests.
+- `RootLayout` returns `<html>`/`<body>` itself, which conflicts with RTL's normal container mounting — query via `document.querySelector(...)` instead of the `render()` return's `container` for layout tests.
+- Pages share `Navbar`/`Footer`, which duplicate a lot of link text/hrefs found in page content itself (e.g. "Book Your Free Assessment", "Microsoft Azure", phone numbers, "About Us"). Scope page-level queries with `within(screen.getByRole("main"))` to avoid ambiguous multi-match errors, and use `getAllByRole`/`getAllByText` where the *same* page legitimately renders something twice (e.g. `PageHero`'s cta + `MainCtaSection`'s cta both say "Book Your Free Assessment").
+- `fireEvent.click` on a `type="submit"` button doesn't reliably trigger form submission in jsdom — use `fireEvent.submit(button.closest("form"))` instead (see `BookingForm.test.tsx`).
+- Images with `alt=""` are accessibility role `presentation`, not `img` — query via `document.querySelector("img")`, not `getByRole("img")`.
+- `Navbar.tsx` exports several otherwise-internal sub-components (`SimplePanel`, `SolutionPanel`, `PlatformPanel`, `SidebarSection`, `MobileNavItem`) purely so they can be unit-tested directly with prop combinations the real `NAV_LEFT`/`NAV_RIGHT` data never exercises (e.g. `SimplePanel` is never reached through the real dropdown router, since every real entry resolves to `PlatformPanel` or `SolutionPanel`).
+- `DesktopNavItem`'s `onClose` prop is genuinely dead code (accepted, never invoked) — marked with both a `/* v8 ignore next */` comment and an eslint-disable, not silently deleted, since removing it would be an unrequested behavior-adjacent change.
 
 ## Brand tokens (src/app/globals.css)
 

@@ -52,7 +52,7 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 // ── Columns panel (single or multi-column arrow list) ────────────────────────
-function SimplePanel({ data }: { data: NavDropdownData }) {
+export function SimplePanel({ data }: { data: NavDropdownData }) {
   const columns = data.columns;
   if (!columns?.length) return null;
 
@@ -99,7 +99,7 @@ function SimplePanel({ data }: { data: NavDropdownData }) {
 }
 
 // ── Arrow sidebar section ─────────────────────────────────────────────────────
-function SidebarSection({ section }: { section: NavSubSection }) {
+export function SidebarSection({ section }: { section: NavSubSection }) {
   return (
     <div className="flex flex-col gap-1">
       {section.heading && (
@@ -127,7 +127,7 @@ function SidebarSection({ section }: { section: NavSubSection }) {
 }
 
 // ── Mega-menu panel (Our Platform) ────────────────────────────────────────────
-function PlatformPanel({ data }: { data: NavDropdownData }) {
+export function PlatformPanel({ data }: { data: NavDropdownData }) {
   const featured = data.featured?.[0];
   return (
     <div className="flex gap-0">
@@ -228,7 +228,7 @@ function PlatformPanel({ data }: { data: NavDropdownData }) {
 }
 
 // ── Solution-style panel (AI / Edge / Fleet / Government) ─────────────────────
-function SolutionPanel({ data }: { data: NavDropdownData }) {
+export function SolutionPanel({ data }: { data: NavDropdownData }) {
   const isDark = data.featured?.some((f) => f.dark);
   return (
     <div className="flex gap-0">
@@ -297,6 +297,7 @@ function DesktopNavItem({
   entry,
   open,
   onOpen,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- accepted for API symmetry with MobileNavItem, never invoked here (see v8 ignore comment at call sites in Navbar)
   onClose,
   scheduleClose,
   cancelClose,
@@ -351,7 +352,7 @@ function DesktopNavItem({
 }
 
 // ── Mobile accordion item ─────────────────────────────────────────────────────
-function MobileNavItem({ entry, onClose }: { entry: NavEntry; onClose: () => void }) {
+export function MobileNavItem({ entry, onClose }: { entry: NavEntry; onClose: () => void }) {
   const [expanded, setExpanded] = useState(false);
 
   if (entry.kind === "link") {
@@ -497,6 +498,7 @@ export function Navbar() {
               entry={entry}
               open={activeMenu === entry.label}
               onOpen={() => { cancelClose(); setActiveMenu(entry.label); }}
+              /* v8 ignore next -- onClose is accepted by DesktopNavItem but never invoked there; dead prop, kept for API symmetry with MobileNavItem */
               onClose={() => setActiveMenu(null)}
               scheduleClose={scheduleClose}
               cancelClose={cancelClose}
@@ -512,6 +514,7 @@ export function Navbar() {
               entry={entry}
               open={activeMenu === entry.label}
               onOpen={() => { cancelClose(); setActiveMenu(entry.label); }}
+              /* v8 ignore next -- onClose is accepted by DesktopNavItem but never invoked there; dead prop, kept for API symmetry with MobileNavItem */
               onClose={() => setActiveMenu(null)}
               scheduleClose={scheduleClose}
               cancelClose={cancelClose}
