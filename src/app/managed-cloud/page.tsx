@@ -10,9 +10,10 @@ import { MainCtaSection } from "@/components/MainCtaSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema, ServiceSchema, BreadcrumbSchema } from "@/components/SchemaMarkup";
 import { pageSocial } from "@/lib/seo";
+import { PRICING_PLANS, formatPrice } from "@/lib/pricing";
 
 const title = "Managed Cloud Services India | CloudSwift";
-const description = "CloudSwift manages public, private, hybrid, and Oracle Cloud environments for businesses across India. Silver, Gold & Platinum plans starting at $29.99/month.";
+const description = `CloudSwift manages public, private, hybrid, and Oracle Cloud environments for businesses across India. Silver, Gold & Platinum plans starting at ${formatPrice(PRICING_PLANS.silver.price)}/month.`;
 
 export const metadata: Metadata = {
   title,
@@ -32,8 +33,8 @@ const tiers = [
 
 const serviceTiers = [
   {
-    name: "Silver",
-    price: "$29.99",
+    name: PRICING_PLANS.silver.name,
+    price: formatPrice(PRICING_PLANS.silver.price),
     period: "/month",
     color: "border-ink/20",
     features: [
@@ -44,8 +45,8 @@ const serviceTiers = [
     ],
   },
   {
-    name: "Gold",
-    price: "$39.99",
+    name: PRICING_PLANS.gold.name,
+    price: formatPrice(PRICING_PLANS.gold.price),
     period: "/month",
     color: "border-teal border-2",
     features: [
@@ -57,8 +58,8 @@ const serviceTiers = [
     ],
   },
   {
-    name: "Platinum",
-    price: "$79.99",
+    name: PRICING_PLANS.platinum.name,
+    price: formatPrice(PRICING_PLANS.platinum.price),
     period: "/month",
     color: "border-ink/20",
     features: [
@@ -78,15 +79,15 @@ const faqs = [
   },
   {
     q: "What is included in the Silver managed cloud plan?",
-    a: "The Silver plan ($29.99/month) includes proactive infrastructure monitoring, business-hours support (8×5), monthly performance and health reports, and email and ticket support.",
+    a: `The Silver plan (${formatPrice(PRICING_PLANS.silver.price)}/month) includes proactive infrastructure monitoring, business-hours support (8×5), monthly performance and health reports, and email and ticket support.`,
   },
   {
     q: "What does the Gold plan include?",
-    a: "The Gold plan ($39.99/month) includes everything in Silver, plus extended 16×7 support, weekly health checks and reviews, priority response SLA, and phone and email support.",
+    a: `The Gold plan (${formatPrice(PRICING_PLANS.gold.price)}/month) includes everything in Silver, plus extended 16×7 support, weekly health checks and reviews, priority response SLA, and phone and email support.`,
   },
   {
     q: "What is the Platinum managed cloud plan?",
-    a: "The Platinum plan ($79.99/month) delivers 24×7 NOC monitoring and response, daily health and security reports, a dedicated account manager, and a fully customised SLA agreement.",
+    a: `The Platinum plan (${formatPrice(PRICING_PLANS.platinum.price)}/month) delivers 24×7 NOC monitoring and response, daily health and security reports, a dedicated account manager, and a fully customised SLA agreement.`,
   },
   {
     q: "Does CloudSwift provide cloud BCP and disaster recovery?",
@@ -103,9 +104,9 @@ export default function ManagedCloudPage() {
         description="CloudSwift manages public, private, hybrid, and Oracle Cloud environments for businesses across India. Silver, Gold & Platinum plans available."
         url="/managed-cloud"
         offers={[
-          { name: "Silver Plan", price: "29.99" },
-          { name: "Gold Plan", price: "39.99" },
-          { name: "Platinum Plan", price: "79.99" },
+          { name: "Silver Plan", price: PRICING_PLANS.silver.price.toFixed(2) },
+          { name: "Gold Plan", price: PRICING_PLANS.gold.price.toFixed(2) },
+          { name: "Platinum Plan", price: PRICING_PLANS.platinum.price.toFixed(2) },
         ]}
       />
       <FaqSchema items={faqs} />

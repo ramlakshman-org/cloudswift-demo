@@ -15,6 +15,7 @@ import { WhyChooseSection } from "@/components/WhyChooseSection";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FaqSchema } from "@/components/SchemaMarkup";
+import { PRICING_PLANS, formatPrice } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Cloud Managed Services & Azure Partner India | CloudSwift",
@@ -42,7 +43,7 @@ const homeFaqs = [
   },
   {
     q: "What is CloudSwift's managed cloud pricing?",
-    a: "CloudSwift offers three managed cloud tiers: Silver ($29.99/month) for proactive monitoring and business-hours support; Gold ($39.99/month) for extended 16×7 support and weekly health checks; and Platinum ($79.99/month) for 24×7 NOC monitoring, daily reports, and a dedicated account manager.",
+    a: `CloudSwift offers three managed cloud tiers: Silver (${formatPrice(PRICING_PLANS.silver.price)}/month) for proactive monitoring and business-hours support; Gold (${formatPrice(PRICING_PLANS.gold.price)}/month) for extended 16×7 support and weekly health checks; and Platinum (${formatPrice(PRICING_PLANS.platinum.price)}/month) for 24×7 NOC monitoring, daily reports, and a dedicated account manager.`,
   },
   {
     q: "How do I get started with CloudSwift?",

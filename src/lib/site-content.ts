@@ -5,6 +5,7 @@ import type {
   IntegrationLogo,
   FooterColumn,
 } from "@/types";
+import { PRICING_PLANS, formatPrice } from "@/lib/pricing";
 
 const IMG = "/images";
 
@@ -126,9 +127,9 @@ export const NAV_LEFT: NavEntry[] = [
       headingDesc: "Simple, transparent pricing",
       style: "arrows",
       links: [
-        { label: "Silver — $29.99/mo", href: "/managed-cloud" },
-        { label: "Gold — $39.99/mo", href: "/managed-cloud" },
-        { label: "Platinum — $79.99/mo", href: "/managed-cloud" },
+        { label: `Silver — ${formatPrice(PRICING_PLANS.silver.price)}/mo`, href: "/managed-cloud" },
+        { label: `Gold — ${formatPrice(PRICING_PLANS.gold.price)}/mo`, href: "/managed-cloud" },
+        { label: `Platinum — ${formatPrice(PRICING_PLANS.platinum.price)}/mo`, href: "/managed-cloud" },
         { label: "Compare all plans", href: "/managed-cloud" },
       ],
     },
