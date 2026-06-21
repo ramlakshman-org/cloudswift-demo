@@ -4,6 +4,7 @@ import type {
   Testimonial,
   IntegrationLogo,
   FooterColumn,
+  CaseStudy,
 } from "@/types";
 import { PRICING_PLANS, formatPrice } from "@/lib/pricing";
 
@@ -61,6 +62,7 @@ export const NAV_LEFT: NavEntry[] = [
         { label: "About CloudSwift", href: "/about" },
         { label: "All services", href: "/services" },
         { label: "Managed Cloud", href: "/managed-cloud" },
+        { label: "Case Studies", href: "/case-studies" },
         { label: "Contact us", href: "/contact" },
       ],
     },
@@ -150,7 +152,7 @@ export const HERO = {
   eyebrow: "ISO 9001-2015 Certified · Microsoft Azure Partner",
   title: ["Expert Cloud & IT", "Managed Services"],
   body: "CloudSwift helps businesses across India build the commercial and technical foundation for a secure, cloud-first digital transformation — from Azure migration and Microsoft 365 to 24/7 managed cloud support.",
-  cta: "Book Your Free Assessment",
+  cta: "Get Your Free Assessment",
   bgPattern: `${IMG}/69b24769f54646d072d97675_bg-img-rd.svg`,
   creasePattern: `${IMG}/69b00e92c91512818f044bb4_Crease-pattern.svg`,
   hexStack: `${IMG}/hero-hexstack.svg`,
@@ -220,7 +222,7 @@ export const WHY_DIFFERENT = {
       image: `${IMG}/69afea9edb6d1239cfc6fc0f_why-for-ai.svg`,
     },
   ],
-  cta: "Book Your Free Assessment",
+  cta: "Get Your Free Assessment",
   bg: `${IMG}/67aca000f44356b8986ce49f_introducing-palette-bg.svg`,
 };
 
@@ -279,7 +281,7 @@ export const WHERE_CARDS: UseCaseCard[] = [
 export const VM_BANNER = {
   title: "Ready to modernize your IT infrastructure?",
   body: "Whether you're planning your first Azure migration, rolling out Microsoft 365, or looking for a reliable managed cloud partner — CloudSwift's certified experts are ready to help.",
-  cta: "Book Your Free Assessment",
+  cta: "Get Your Free Assessment",
 };
 
 // ── Cloud partner ecosystem ───────────────────────────────────────────────────
@@ -342,7 +344,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const MAIN_CTA = {
   heading: "Start your cloud transformation today",
   body: "Talk to a CloudSwift expert about your infrastructure challenges. Azure migration, Microsoft 365 deployment, managed cloud, or Power BI — we'll find the right path for your business.",
-  cta: "Book Your Free Assessment",
+  cta: "Get Your Free Assessment",
 };
 
 // ── Footer ───────────────────────────────────────────────────────────────────
@@ -376,6 +378,7 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "About Us", href: "/about" },
       { label: "Our Services", href: "/services" },
       { label: "Managed Cloud", href: "/managed-cloud" },
+      { label: "Case Studies", href: "/case-studies" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
@@ -388,5 +391,59 @@ export const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Bengaluru, Karnataka", href: "/contact" },
       { label: "Mumbai, Maharashtra", href: "/contact" },
     ],
+  },
+];
+
+// ── Case studies ─────────────────────────────────────────────────────────────
+// All three entries below are illustrative placeholders (isPlaceholder: true) —
+// no real client names, numbers, or quotes. Swap in real client stories via
+// CASE_STUDIES before launch; the [isPlaceholder] disclaimer banner on
+// /case-studies/[slug] renders automatically until then.
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: "regional-bank-azure-migration",
+    client: "A regional financial services firm",
+    industry: "Financial Services",
+    category: "Microsoft Azure",
+    summary: "Migrating a compliance-bound core banking workload from on-premise to Azure without disrupting branch operations.",
+    challenge: "The client ran core banking and customer-facing systems on aging on-premise infrastructure, with no disaster recovery site and rising hardware maintenance costs. Any migration had to meet RBI-aligned data residency and audit requirements without downtime during business hours.",
+    solution: "CloudSwift ran a phased lift-and-shift to Azure, starting with non-critical workloads to validate the migration runbook, then cutting over core banking systems over a weekend window. Azure Site Recovery was configured for DR, and Microsoft Defender plus Azure Sentinel were deployed for continuous compliance monitoring.",
+    results: [
+      "Zero unplanned downtime during business hours across the full migration",
+      "Disaster recovery RTO reduced from days to under 4 hours",
+      "Infrastructure costs reduced through right-sizing and reserved instance pricing",
+    ],
+    isPlaceholder: true,
+  },
+  {
+    slug: "manufacturer-m365-modern-workplace",
+    client: "A mid-size manufacturing company",
+    industry: "Manufacturing",
+    category: "Microsoft 365 / Modern Workplace",
+    summary: "Consolidating email, file sharing, and collaboration tools onto Microsoft 365 across multiple plant locations.",
+    challenge: "The client's plants each ran their own file servers and a mix of legacy email systems, making cross-site collaboration slow and creating inconsistent security policies across locations.",
+    solution: "CloudSwift migrated all mailboxes to Exchange Online, consolidated file storage onto SharePoint and OneDrive, and rolled out Microsoft Teams as the standard collaboration tool across every plant. Conditional Access and Multi-Factor Authentication were enforced sitewide as part of the rollout.",
+    results: [
+      "All plant locations consolidated onto a single, centrally managed M365 tenant",
+      "Cross-site document collaboration time reduced significantly",
+      "Sitewide MFA enforcement closed a major identity security gap",
+    ],
+    isPlaceholder: true,
+  },
+  {
+    slug: "retailer-managed-cloud-cost-optimisation",
+    client: "A growing e-commerce retailer",
+    industry: "Retail & E-commerce",
+    category: "Managed Cloud Services",
+    summary: "Bringing a fast-growing retailer's unmanaged multi-cloud sprawl under a single managed services umbrella.",
+    challenge: "Rapid growth had left the client running workloads across AWS and Azure with no consistent monitoring, patching, or cost governance — infrastructure spend was climbing faster than revenue, with no one accountable for optimisation.",
+    solution: "CloudSwift onboarded the client onto a Platinum managed cloud plan, covering 24x7 NOC monitoring, automated patch management across both clouds, and monthly cost optimisation reviews including reserved instance and right-sizing recommendations.",
+    results: [
+      "Cloud spend growth brought back in line with revenue growth",
+      "24x7 monitoring coverage replacing ad-hoc, business-hours-only checks",
+      "A single managed support relationship across both AWS and Azure",
+    ],
+    isPlaceholder: true,
   },
 ];

@@ -97,3 +97,16 @@ export interface FooterColumn {
   heading: string;
   links: NavLink[];
 }
+
+export interface CaseStudy {
+  slug: string;
+  client: string;
+  industry: string;
+  category: string;
+  summary: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  /** True until a real client story replaces this entry — rendered with a visible disclaimer. */
+  isPlaceholder: boolean;
+}
