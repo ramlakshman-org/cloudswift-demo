@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
+import { insertEnquiry } from "@/lib/enquiries";
 
 export async function POST(req: Request) {
   const { firstName, lastName, email, company, usecase, message } =
     await req.json();
+
+  await insertEnquiry({ firstName, lastName, email, company, category: usecase, message });
 
   const apiKey = process.env.RESEND_API_KEY;
 

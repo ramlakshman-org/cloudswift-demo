@@ -14,4 +14,13 @@ describe("robots", () => {
   it("points to the production sitemap", () => {
     expect(robots().sitemap).toBe("https://oncloudswift.com/sitemap.xml");
   });
+
+  it("disallows /admin for every crawler rule", () => {
+    const result = robots();
+    const rules = result.rules instanceof Array ? result.rules : [];
+    expect(rules.length).toBeGreaterThan(0);
+    for (const rule of rules) {
+      expect(rule.disallow).toBe("/admin");
+    }
+  });
 });

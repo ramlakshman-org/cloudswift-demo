@@ -4,17 +4,19 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       // General crawlers
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: "/admin" },
       // AI training & retrieval crawlers — explicitly allowed
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "ChatGPT-User", allow: "/" },
-      { userAgent: "ClaudeBot", allow: "/" },
-      { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
-      { userAgent: "Googlebot", allow: "/" },
-      { userAgent: "Bingbot", allow: "/" },
-      { userAgent: "cohere-ai", allow: "/" },
+      // (each gets its own disallow too: a bot matching a specific group
+      // ignores the "*" group entirely, per the robots.txt spec)
+      { userAgent: "GPTBot", allow: "/", disallow: "/admin" },
+      { userAgent: "ChatGPT-User", allow: "/", disallow: "/admin" },
+      { userAgent: "ClaudeBot", allow: "/", disallow: "/admin" },
+      { userAgent: "anthropic-ai", allow: "/", disallow: "/admin" },
+      { userAgent: "PerplexityBot", allow: "/", disallow: "/admin" },
+      { userAgent: "Google-Extended", allow: "/", disallow: "/admin" },
+      { userAgent: "Googlebot", allow: "/", disallow: "/admin" },
+      { userAgent: "Bingbot", allow: "/", disallow: "/admin" },
+      { userAgent: "cohere-ai", allow: "/", disallow: "/admin" },
     ],
     sitemap: "https://oncloudswift.com/sitemap.xml",
   };

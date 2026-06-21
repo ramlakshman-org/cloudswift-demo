@@ -1,5 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+
+vi.mock("@/lib/enquiries", () => ({ insertEnquiry: vi.fn().mockResolvedValue(undefined) }));
+
 import { POST } from "./route";
+import { insertEnquiry } from "@/lib/enquiries";
+
+const insertEnquiryMock = vi.mocked(insertEnquiry);
 
 function makeRequest(body: Record<string, unknown>) {
   return { json: async () => body } as Request;
@@ -10,6 +16,8 @@ describe("POST /api/contact", () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
+    insertEnquiryMock.mockClear();
+    insertEnquiryMock.mockResolvedValue(undefined);
   });
 
   afterEach(() => {
@@ -39,6 +47,14 @@ describe("POST /api/contact", () => {
       expect.objectContaining({ firstName: "Jane", email: "jane@example.com" })
     );
     expect(fetchSpy).not.toHaveBeenCalled();
+    expect(insertEnquiryMock).toHaveBeenCalledWith({
+      firstName: "Jane",
+      lastName: "Doe",
+      email: "jane@example.com",
+      company: "Acme",
+      category: "Migration",
+      message: "Hello",
+    });
   });
 
   it("sends via Resend and returns ok:true when the key is set and Resend succeeds", async () => {
