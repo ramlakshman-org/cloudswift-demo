@@ -68,7 +68,7 @@ export default function M365Page() {
           eyebrow="Microsoft 365"
           title="Modern Workplace powered by Microsoft 365"
           body="CloudSwift designs, deploys, and manages Microsoft 365 environments — from Teams and SharePoint to security hardening, device management, and tenant migrations."
-          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
+          cta={{ label: "Get Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "Explore Azure", href: "/solutions/azure" }}
           teal
         />

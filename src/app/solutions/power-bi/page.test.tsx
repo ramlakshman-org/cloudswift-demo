@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import PowerBIPage from "./page";
 
-// Navbar's own CTA shares the same "Book Your Free Assessment" text; scope
+// Navbar's own CTA shares the same "Get Your Free Assessment" text; scope
 // to <main> to avoid ambiguous multi-match errors.
 describe("PowerBIPage", () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("PowerBIPage", () => {
     expect(main.getByRole("heading", { name: "Turn your data into decisions with Power BI" })).toBeInTheDocument();
     expect(main.getByText("Power BI Dashboards")).toBeInTheDocument();
     expect(main.getByText("Training & Support")).toBeInTheDocument();
-    for (const link of main.getAllByRole("link", { name: "Book Your Free Assessment" })) {
+    for (const link of main.getAllByRole("link", { name: "Get Your Free Assessment" })) {
       expect(link).toHaveAttribute("href", "/assessment");
     }
     expect(main.getByRole("link", { name: "Explore Dynamics 365" })).toHaveAttribute("href", "/solutions/dynamics-365");

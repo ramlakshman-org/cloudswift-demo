@@ -17,7 +17,7 @@ describe("TenantMigrationPage", () => {
     expect(main.getByRole("heading", { name: "Tenant & G-Suite migration with zero data loss" })).toBeInTheDocument();
     expect(main.getByText("Tenant-to-Tenant Migration")).toBeInTheDocument();
     expect(main.getByText("G-Suite to Microsoft 365")).toBeInTheDocument();
-    for (const link of main.getAllByRole("link", { name: "Book Your Free Assessment" })) {
+    for (const link of main.getAllByRole("link", { name: "Get Your Free Assessment" })) {
       expect(link).toHaveAttribute("href", "/assessment");
     }
     expect(main.getByRole("link", { name: "Explore Microsoft 365" })).toHaveAttribute("href", "/solutions/m365");

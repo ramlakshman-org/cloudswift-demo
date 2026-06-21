@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import AssessmentPage from "./page";
 
 describe("AssessmentPage", () => {
-  it("renders the hero, all 4 breakdown cards, trust line, and the embed", () => {
+  it("renders the hero, all 4 breakdown cards, trust line, and the assessment wizard", () => {
     render(<AssessmentPage />);
     expect(
       screen.getByRole("heading", { name: "Find Out If Your Cloud Migration Is About to Go Over Budget — Before It Does" })
@@ -13,6 +13,7 @@ describe("AssessmentPage", () => {
     expect(screen.getByText("Security exposure")).toBeInTheDocument();
     expect(screen.getByText("Realistic timeline")).toBeInTheDocument();
     expect(screen.getByText(/ISO 9001-2015 Certified/)).toBeInTheDocument();
+    expect(screen.getByText("What can we help you with?")).toBeInTheDocument();
     expect(document.querySelectorAll('script[type="application/ld+json"]').length).toBeGreaterThan(0);
   });
 });

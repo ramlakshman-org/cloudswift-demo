@@ -521,7 +521,7 @@ export function Navbar() {
             />
           ))}
           <CtaButton href="/assessment" variant="outline" className="ml-4 px-5 py-2 text-[13px]">
-            Book Your Free Assessment
+            Get Your Free Assessment
           </CtaButton>
         </div>
 
@@ -549,7 +549,7 @@ export function Navbar() {
           </div>
           <div className="p-4 border-t border-ink/10">
             <CtaButton href="/assessment" variant="primary" className="w-full justify-center" onClick={() => setMobileOpen(false)}>
-              Book Your Free Assessment
+              Get Your Free Assessment
             </CtaButton>
           </div>
         </div>

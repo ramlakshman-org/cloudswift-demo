@@ -68,7 +68,7 @@ export default function TenantMigrationPage() {
           eyebrow="Migration Services"
           title="Tenant & G-Suite migration with zero data loss"
           body="CloudSwift plans and executes Microsoft 365 tenant-to-tenant migrations and Google Workspace to M365 migrations — every mailbox, file, and permission accounted for."
-          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
+          cta={{ label: "Get Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "Explore Microsoft 365", href: "/solutions/m365" }}
           teal
         />

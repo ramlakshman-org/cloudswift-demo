@@ -17,7 +17,7 @@ describe("OracleCloudPage", () => {
     expect(main.getByRole("heading", { name: "Managed Oracle Cloud services, end to end" })).toBeInTheDocument();
     expect(main.getByText("Oracle Cloud Advisory")).toBeInTheDocument();
     expect(main.getByText("Oracle Engineered Systems")).toBeInTheDocument();
-    for (const link of main.getAllByRole("link", { name: "Book Your Free Assessment" })) {
+    for (const link of main.getAllByRole("link", { name: "Get Your Free Assessment" })) {
       expect(link).toHaveAttribute("href", "/assessment");
     }
     expect(main.getByRole("link", { name: "Explore Managed Cloud" })).toHaveAttribute("href", "/managed-cloud");

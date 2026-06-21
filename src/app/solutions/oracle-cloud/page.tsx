@@ -68,7 +68,7 @@ export default function OracleCloudPage() {
           eyebrow="Oracle Cloud"
           title="Managed Oracle Cloud services, end to end"
           body="CloudSwift advises, migrates, and manages Oracle Cloud environments — IaaS, PaaS, Engineered Systems, and hybrid deployments — backed by 24/7 support."
-          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
+          cta={{ label: "Get Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "Explore Managed Cloud", href: "/managed-cloud" }}
           teal
         />

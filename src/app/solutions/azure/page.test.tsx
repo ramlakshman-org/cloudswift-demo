@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import AzurePage from "./page";
 
-// Navbar's own CTA shares the same "Book Your Free Assessment" text; scope
+// Navbar's own CTA shares the same "Get Your Free Assessment" text; scope
 // to <main> to avoid ambiguous multi-match errors.
 describe("AzurePage", () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("AzurePage", () => {
     expect(main.getByRole("heading", { name: "Azure cloud services, done right" })).toBeInTheDocument();
     expect(main.getByText("Azure Infrastructure")).toBeInTheDocument();
     expect(main.getByText("Managed Azure Support")).toBeInTheDocument();
-    for (const link of main.getAllByRole("link", { name: "Book Your Free Assessment" })) {
+    for (const link of main.getAllByRole("link", { name: "Get Your Free Assessment" })) {
       expect(link).toHaveAttribute("href", "/assessment");
     }
     expect(main.getByRole("link", { name: "All solutions" })).toHaveAttribute("href", "/solutions/m365");

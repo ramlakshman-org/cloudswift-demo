@@ -68,7 +68,7 @@ export default function PowerBIPage() {
           eyebrow="Power BI & Analytics"
           title="Turn your data into decisions with Power BI"
           body="CloudSwift delivers end-to-end data and analytics services — from Azure data infrastructure and Power BI dashboards to AI-powered self-service BI that empowers every business user."
-          cta={{ label: "Book Your Free Assessment", href: "/assessment" }}
+          cta={{ label: "Get Your Free Assessment", href: "/assessment" }}
           ctaSecondary={{ label: "Explore Dynamics 365", href: "/solutions/dynamics-365" }}
         />
         <FeatureGrid heading="Data & analytics services" subheading="What we deliver" features={features} cols={3} />

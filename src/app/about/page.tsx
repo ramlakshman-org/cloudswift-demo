@@ -51,7 +51,7 @@ export default function AboutPage() {
               <p className="mb-10 max-w-xl text-lg leading-relaxed text-white/70">
                 CloudSwift is an ISO 9001-2015 certified cloud and IT infrastructure services company. With a team of accredited experts, we assist clients to plan, right-size, optimize, manage, and innovate their IT infrastructure throughout the entire lifecycle.
               </p>
-              <CtaButton href="/assessment" variant="primary">Book Your Free Assessment</CtaButton>
+              <CtaButton href="/assessment" variant="primary">Get Your Free Assessment</CtaButton>
             </Reveal>
           </div>
         </section>

@@ -47,7 +47,7 @@ const homeFaqs = [
   },
   {
     q: "How do I get started with CloudSwift?",
-    a: "Book a free 30-minute Cloud Cost & Risk Assessment at oncloudswift.com/assessment. A CloudSwift cloud architect will walk through your current environment, budget risk areas, security exposure, and a realistic timeline — whether that's migration, managed services, or a specific Microsoft solution.",
+    a: "Get a free Cloud Cost & Risk Assessment at oncloudswift.com/assessment. Answer a few quick questions and a CloudSwift cloud architect will follow up with a breakdown of your current environment, budget risk areas, security exposure, and a realistic timeline — whether that's migration, managed services, or a specific Microsoft solution.",
   },
 ];
 

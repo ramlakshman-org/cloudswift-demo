@@ -24,7 +24,7 @@ describe("ManagedCloudPage", () => {
       expect(main.getByText(plan)).toBeInTheDocument();
     }
     expect(document.getElementById("security")).toBeInTheDocument();
-    const bookButtons = screen.getAllByRole("link", { name: "Book Your Free Assessment" });
+    const bookButtons = screen.getAllByRole("link", { name: "Get Your Free Assessment" });
     expect(bookButtons.length).toBeGreaterThanOrEqual(3);
     unmount();
   });

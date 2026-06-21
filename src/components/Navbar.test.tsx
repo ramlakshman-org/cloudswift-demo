@@ -30,7 +30,7 @@ describe("Navbar (real content)", () => {
     render(<Navbar />);
     expect(screen.getByLabelText("CloudSwift home")).toBeInTheDocument();
     expect(screen.getByText("CloudSwift")).toBeInTheDocument();
-    const cta = screen.getByRole("link", { name: "Book Your Free Assessment" });
+    const cta = screen.getByRole("link", { name: "Get Your Free Assessment" });
     expect(cta).toHaveAttribute("href", "/assessment");
   });
 
@@ -215,7 +215,7 @@ describe("Navbar (real content)", () => {
   it("the mobile CTA closes the menu when clicked", () => {
     render(<Navbar />);
     fireEvent.click(screen.getByLabelText("Open menu"));
-    const mobileCta = within(getMobileOverlay()).getByRole("link", { name: "Book Your Free Assessment" });
+    const mobileCta = within(getMobileOverlay()).getByRole("link", { name: "Get Your Free Assessment" });
     fireEvent.click(mobileCta);
     expect(screen.getByLabelText("Open menu")).toBeInTheDocument();
   });
