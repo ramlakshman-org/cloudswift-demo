@@ -70,4 +70,29 @@ describe("AdminDashboardPage", () => {
 
     expect(screen.getByText("No enquiries yet.")).toBeInTheDocument();
   });
+
+  it("shows a connection error with the Atlas hint when listEnquiries throws an Error", async () => {
+    isMongoConfiguredMock.mockReturnValue(true);
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    listEnquiriesMock.mockRejectedValue(new Error("connection timed out"));
+
+    const ui = await AdminDashboardPage();
+    render(ui);
+
+    expect(screen.getByText("Could not connect to the database.")).toBeInTheDocument();
+    expect(screen.getByText("connection timed out")).toBeInTheDocument();
+    expect(screen.getByText("Network Access")).toBeInTheDocument();
+    expect(errorSpy).toHaveBeenCalledWith("[admin] Failed to load enquiries:", expect.any(Error));
+  });
+
+  it("falls back to a generic message when listEnquiries throws a non-Error value", async () => {
+    isMongoConfiguredMock.mockReturnValue(true);
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    listEnquiriesMock.mockRejectedValue("plain string failure");
+
+    const ui = await AdminDashboardPage();
+    render(ui);
+
+    expect(screen.getByText("Unknown error")).toBeInTheDocument();
+  });
 });
