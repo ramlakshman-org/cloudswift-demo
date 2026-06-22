@@ -12,7 +12,10 @@ describe("BookingForm", () => {
     expect(screen.getByLabelText("First name")).toBeInTheDocument();
     expect(screen.getByLabelText("Last name")).toBeInTheDocument();
     expect(screen.getByLabelText("Work email")).toBeInTheDocument();
+    expect(screen.getByLabelText("Phone")).toBeInTheDocument();
+    expect(screen.getByLabelText("Job title")).toBeInTheDocument();
     expect(screen.getByLabelText("Company")).toBeInTheDocument();
+    expect(screen.getByLabelText("City")).toBeInTheDocument();
     expect(screen.getByLabelText("Primary use case")).toBeInTheDocument();
     expect(screen.getByLabelText(/Tell us about your challenge/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Book my consultation" })).not.toBeDisabled();
@@ -24,14 +27,20 @@ describe("BookingForm", () => {
     fireEvent.change(screen.getByLabelText("First name"), { target: { value: "Jane" } });
     fireEvent.change(screen.getByLabelText("Last name"), { target: { value: "Doe" } });
     fireEvent.change(screen.getByLabelText("Work email"), { target: { value: "jane@x.com" } });
+    fireEvent.change(screen.getByLabelText("Phone"), { target: { value: "+91 98765 43210" } });
+    fireEvent.change(screen.getByLabelText("Job title"), { target: { value: "IT Manager" } });
     fireEvent.change(screen.getByLabelText("Company"), { target: { value: "Acme" } });
+    fireEvent.change(screen.getByLabelText("City"), { target: { value: "Bengaluru" } });
     fireEvent.change(screen.getByLabelText("Primary use case"), { target: { value: "Microsoft Azure" } });
     fireEvent.change(screen.getByLabelText(/Tell us about your challenge/), { target: { value: "Help" } });
 
     expect(screen.getByLabelText("First name")).toHaveValue("Jane");
     expect(screen.getByLabelText("Last name")).toHaveValue("Doe");
     expect(screen.getByLabelText("Work email")).toHaveValue("jane@x.com");
+    expect(screen.getByLabelText("Phone")).toHaveValue("+91 98765 43210");
+    expect(screen.getByLabelText("Job title")).toHaveValue("IT Manager");
     expect(screen.getByLabelText("Company")).toHaveValue("Acme");
+    expect(screen.getByLabelText("City")).toHaveValue("Bengaluru");
     expect(screen.getByLabelText("Primary use case")).toHaveValue("Microsoft Azure");
     expect(screen.getByLabelText(/Tell us about your challenge/)).toHaveValue("Help");
   });

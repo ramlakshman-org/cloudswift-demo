@@ -67,6 +67,9 @@ describe("POST /api/contact", () => {
         firstName: "Jane",
         lastName: "Doe",
         email: "jane@example.com",
+        phone: "+91-9876543210",
+        jobTitle: "IT Manager",
+        city: "Bengaluru",
         company: "Acme",
         usecase: "Migration",
         message: "Hello",
@@ -83,7 +86,13 @@ describe("POST /api/contact", () => {
     const sentBody = JSON.parse(fetchMock.mock.calls[0][1].body);
     expect(sentBody.subject).toBe("New enquiry from Jane Doe — Migration");
     expect(sentBody.html).toContain("Jane Doe");
+    expect(sentBody.html).toContain("+91-9876543210");
+    expect(sentBody.html).toContain("IT Manager");
+    expect(sentBody.html).toContain("Bengaluru");
     expect(await res.json()).toEqual({ ok: true });
+    expect(insertEnquiryMock).toHaveBeenCalledWith(
+      expect.objectContaining({ phone: "+91-9876543210", jobTitle: "IT Manager", city: "Bengaluru" })
+    );
   });
 
   it("falls back to defaults for missing optional fields in the email body", async () => {

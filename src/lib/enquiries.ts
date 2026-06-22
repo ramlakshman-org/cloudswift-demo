@@ -18,6 +18,9 @@ export interface Enquiry {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
+  jobTitle?: string;
+  city?: string;
   company?: string;
   category: string;
   message?: string;
@@ -31,6 +34,9 @@ export interface NewEnquiry {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
+  jobTitle?: string;
+  city?: string;
   company?: string;
   category?: string;
   message?: string;
@@ -56,6 +62,9 @@ export async function insertEnquiry(input: NewEnquiry): Promise<void> {
     firstName: input.firstName,
     lastName: input.lastName,
     email: input.email,
+    phone: input.phone || undefined,
+    jobTitle: input.jobTitle || undefined,
+    city: input.city || undefined,
     company: input.company || undefined,
     category: input.category || "Other",
     message: input.message || undefined,
@@ -81,7 +90,7 @@ export async function listEnquiries(filter: ListEnquiriesFilter = {}): Promise<E
   if (filter.status) query.status = filter.status;
   if (filter.search) {
     const re = new RegExp(filter.search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
-    query.$or = [{ firstName: re }, { lastName: re }, { email: re }, { company: re }];
+    query.$or = [{ firstName: re }, { lastName: re }, { email: re }, { company: re }, { phone: re }];
   }
 
   return db
@@ -97,6 +106,9 @@ export function serializeEnquiry(e: Enquiry): SerializedEnquiry {
     firstName: e.firstName,
     lastName: e.lastName,
     email: e.email,
+    phone: e.phone,
+    jobTitle: e.jobTitle,
+    city: e.city,
     company: e.company,
     category: e.category,
     message: e.message,

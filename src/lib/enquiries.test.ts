@@ -42,6 +42,9 @@ describe("enquiries", () => {
         firstName: "Jane",
         lastName: "Doe",
         email: "jane@example.com",
+        phone: "+91-9876543210",
+        jobTitle: "IT Manager",
+        city: "Bengaluru",
         company: "Acme",
         category: "Cloud Migration",
         message: "Help us migrate",
@@ -53,6 +56,9 @@ describe("enquiries", () => {
           firstName: "Jane",
           lastName: "Doe",
           email: "jane@example.com",
+          phone: "+91-9876543210",
+          jobTitle: "IT Manager",
+          city: "Bengaluru",
           company: "Acme",
           category: "Cloud Migration",
           message: "Help us migrate",
@@ -88,7 +94,14 @@ describe("enquiries", () => {
       await insertEnquiry({ firstName: "Jane", lastName: "Doe", email: "jane@example.com" });
 
       expect(insertOne).toHaveBeenCalledWith(
-        expect.objectContaining({ category: "Other", company: undefined, message: undefined })
+        expect.objectContaining({
+          category: "Other",
+          company: undefined,
+          message: undefined,
+          phone: undefined,
+          jobTitle: undefined,
+          city: undefined,
+        })
       );
     });
   });
@@ -124,6 +137,7 @@ describe("enquiries", () => {
           { lastName: expect.any(RegExp) },
           { email: expect.any(RegExp) },
           { company: expect.any(RegExp) },
+          { phone: expect.any(RegExp) },
         ],
       });
     });
@@ -155,6 +169,25 @@ describe("enquiries", () => {
       });
 
       expect(result.id).toBe("");
+    });
+
+    it("passes through phone, jobTitle, and city", () => {
+      const result = serializeEnquiry({
+        firstName: "Jane",
+        lastName: "Doe",
+        email: "jane@example.com",
+        phone: "+91-9876543210",
+        jobTitle: "IT Manager",
+        city: "Bengaluru",
+        category: "Other",
+        status: "new",
+        source: "contact",
+        createdAt: new Date("2026-01-01T00:00:00Z"),
+      });
+
+      expect(result.phone).toBe("+91-9876543210");
+      expect(result.jobTitle).toBe("IT Manager");
+      expect(result.city).toBe("Bengaluru");
     });
   });
 

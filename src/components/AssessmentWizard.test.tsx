@@ -10,7 +10,11 @@ function fillContactStep() {
   fireEvent.change(screen.getByLabelText("First name"), { target: { value: "Jane" } });
   fireEvent.change(screen.getByLabelText("Last name"), { target: { value: "Doe" } });
   fireEvent.change(screen.getByLabelText("Work email"), { target: { value: "jane@example.com" } });
+  fireEvent.change(screen.getByLabelText("Phone"), { target: { value: "+91 98765 43210" } });
+  fireEvent.change(screen.getByLabelText("Job title"), { target: { value: "IT Manager" } });
   fireEvent.change(screen.getByLabelText("Company"), { target: { value: "Acme" } });
+  fireEvent.change(screen.getByLabelText("City"), { target: { value: "Bengaluru" } });
+  fireEvent.change(screen.getByLabelText(/Anything else/), { target: { value: "Urgent — audit next month" } });
 }
 
 describe("AssessmentWizard", () => {
@@ -90,7 +94,11 @@ describe("AssessmentWizard", () => {
       firstName: "Jane",
       lastName: "Doe",
       email: "jane@example.com",
+      phone: "+91 98765 43210",
+      jobTitle: "IT Manager",
+      city: "Bengaluru",
       company: "Acme",
+      message: "Urgent — audit next month",
       category: "Microsoft Azure",
       answers: { driver: "Cost reduction" },
     });

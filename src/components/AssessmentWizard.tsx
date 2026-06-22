@@ -12,7 +12,16 @@ export function AssessmentWizard() {
   const [category, setCategory] = useState<EnquiryCategory | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<Status>("idle");
-  const [contact, setContact] = useState({ firstName: "", lastName: "", email: "", company: "" });
+  const [contact, setContact] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    jobTitle: "",
+    city: "",
+    company: "",
+    message: "",
+  });
 
   function selectCategory(c: EnquiryCategory) {
     setCategory(c);
@@ -184,16 +193,68 @@ export function AssessmentWizard() {
                 className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
               />
             </div>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ink">
+                  Phone
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  value={contact.phone}
+                  onChange={(e) => setContactField("phone", e.target.value)}
+                  className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+                />
+              </div>
+              <div>
+                <label htmlFor="jobTitle" className="mb-1.5 block text-sm font-medium text-ink">
+                  Job title
+                </label>
+                <input
+                  id="jobTitle"
+                  type="text"
+                  value={contact.jobTitle}
+                  onChange={(e) => setContactField("jobTitle", e.target.value)}
+                  className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-ink">
+                  Company
+                </label>
+                <input
+                  id="company"
+                  type="text"
+                  value={contact.company}
+                  onChange={(e) => setContactField("company", e.target.value)}
+                  className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+                />
+              </div>
+              <div>
+                <label htmlFor="city" className="mb-1.5 block text-sm font-medium text-ink">
+                  City
+                </label>
+                <input
+                  id="city"
+                  type="text"
+                  value={contact.city}
+                  onChange={(e) => setContactField("city", e.target.value)}
+                  className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+                />
+              </div>
+            </div>
             <div>
-              <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-ink">
-                Company
+              <label htmlFor="wizard-message" className="mb-1.5 block text-sm font-medium text-ink">
+                Anything else we should know? (optional)
               </label>
-              <input
-                id="company"
-                type="text"
-                value={contact.company}
-                onChange={(e) => setContactField("company", e.target.value)}
-                className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+              <textarea
+                id="wizard-message"
+                rows={3}
+                value={contact.message}
+                onChange={(e) => setContactField("message", e.target.value)}
+                className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition resize-none"
               />
             </div>
           </div>

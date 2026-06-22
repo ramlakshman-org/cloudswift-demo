@@ -8,7 +8,8 @@ function isEnquiryCategory(value: unknown): value is EnquiryCategory {
 }
 
 export async function POST(req: Request) {
-  const { firstName, lastName, email, company, category, answers } = await req.json();
+  const { firstName, lastName, email, phone, jobTitle, city, company, category, answers, message } =
+    await req.json();
 
   if (!isEnquiryCategory(category)) {
     return NextResponse.json({ ok: false, error: "Invalid category" }, { status: 400 });
@@ -24,9 +25,13 @@ export async function POST(req: Request) {
     firstName,
     lastName,
     email,
+    phone,
+    jobTitle,
+    city,
     company,
     category,
     answers: safeAnswers,
+    message,
     source: "assessment",
   });
 
@@ -38,7 +43,7 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
-    console.log("[assessment]", { firstName, lastName, email, company, category, answers: safeAnswers });
+    console.log("[assessment]", { firstName, lastName, email, phone, jobTitle, city, company, category, answers: safeAnswers, message });
     return NextResponse.json({ ok: true });
   }
 
@@ -56,9 +61,13 @@ export async function POST(req: Request) {
       html: `
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "—"}</p>
+        <p><strong>Job title:</strong> ${jobTitle || "—"}</p>
+        <p><strong>City:</strong> ${city || "—"}</p>
         <p><strong>Company:</strong> ${company || "—"}</p>
         <p><strong>Category:</strong> ${category}</p>
         ${answersHtml}
+        <p><strong>Anything else:</strong><br/>${message || "—"}</p>
       `,
     }),
   });

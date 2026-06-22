@@ -7,7 +7,7 @@ type Status = "idle" | "loading" | "success" | "error";
 export function BookingForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
-    firstName: "", lastName: "", email: "", company: "", usecase: "", message: "",
+    firstName: "", lastName: "", email: "", phone: "", jobTitle: "", city: "", company: "", usecase: "", message: "",
   });
 
   function set(field: string, value: string) {
@@ -91,18 +91,46 @@ export function BookingForm() {
           />
         </div>
 
-        <div>
-          <label htmlFor="company" className="mb-1.5 block text-sm font-medium text-ink">
-            Company
-          </label>
-          <input
-            id="company"
-            type="text"
-            placeholder="Acme Corp"
-            value={form.company}
-            onChange={(e) => set("company", e.target.value)}
-            className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/35 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
-          />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {[
+            { id: "phone", label: "Phone", placeholder: "+91 98765 43210", type: "tel" },
+            { id: "jobTitle", label: "Job title", placeholder: "IT Manager" },
+          ].map((f) => (
+            <div key={f.id}>
+              <label htmlFor={f.id} className="mb-1.5 block text-sm font-medium text-ink">
+                {f.label}
+              </label>
+              <input
+                id={f.id}
+                type={f.type || "text"}
+                placeholder={f.placeholder}
+                value={form[f.id as keyof typeof form]}
+                onChange={(e) => set(f.id, e.target.value)}
+                className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/35 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {[
+            { id: "company", label: "Company", placeholder: "Acme Corp" },
+            { id: "city", label: "City", placeholder: "Bengaluru" },
+          ].map((f) => (
+            <div key={f.id}>
+              <label htmlFor={f.id} className="mb-1.5 block text-sm font-medium text-ink">
+                {f.label}
+              </label>
+              <input
+                id={f.id}
+                type="text"
+                placeholder={f.placeholder}
+                value={form[f.id as keyof typeof form]}
+                onChange={(e) => set(f.id, e.target.value)}
+                className="w-full rounded-lg border border-ink/15 bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink/35 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20 transition"
+              />
+            </div>
+          ))}
         </div>
 
         <div>

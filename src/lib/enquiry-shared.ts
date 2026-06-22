@@ -30,6 +30,9 @@ export interface SerializedEnquiry {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
+  jobTitle?: string;
+  city?: string;
   company?: string;
   category: string;
   message?: string;

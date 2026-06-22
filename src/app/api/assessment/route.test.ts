@@ -95,8 +95,12 @@ describe("POST /api/assessment", () => {
         firstName: "Jane",
         lastName: "Doe",
         email: "jane@example.com",
+        phone: "+91-9876543210",
+        jobTitle: "IT Manager",
+        city: "Bengaluru",
         category: "Microsoft Azure",
         answers: { driver: "Cost reduction", unknownId: "some value" },
+        message: "We have a hard deadline next quarter.",
       })
     );
 
@@ -104,6 +108,18 @@ describe("POST /api/assessment", () => {
     expect(sentBody.subject).toBe("New free assessment request from Jane Doe — Microsoft Azure");
     expect(sentBody.html).toContain("What's driving this?:</strong> Cost reduction");
     expect(sentBody.html).toContain("unknownId:</strong> some value");
+    expect(sentBody.html).toContain("+91-9876543210");
+    expect(sentBody.html).toContain("IT Manager");
+    expect(sentBody.html).toContain("Bengaluru");
+    expect(sentBody.html).toContain("We have a hard deadline next quarter.");
+    expect(insertEnquiryMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        phone: "+91-9876543210",
+        jobTitle: "IT Manager",
+        city: "Bengaluru",
+        message: "We have a hard deadline next quarter.",
+      })
+    );
   });
 
   it("returns ok:false with 500 when Resend responds with an error", async () => {

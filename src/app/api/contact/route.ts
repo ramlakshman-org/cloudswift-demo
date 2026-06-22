@@ -2,16 +2,16 @@ import { NextResponse } from "next/server";
 import { insertEnquiry } from "@/lib/enquiries";
 
 export async function POST(req: Request) {
-  const { firstName, lastName, email, company, usecase, message } =
+  const { firstName, lastName, email, phone, jobTitle, city, company, usecase, message } =
     await req.json();
 
-  await insertEnquiry({ firstName, lastName, email, company, category: usecase, message });
+  await insertEnquiry({ firstName, lastName, email, phone, jobTitle, city, company, category: usecase, message });
 
   const apiKey = process.env.RESEND_API_KEY;
 
   // In dev without a key: log and return success so form is testable
   if (!apiKey) {
-    console.log("[contact form]", { firstName, lastName, email, company, usecase, message });
+    console.log("[contact form]", { firstName, lastName, email, phone, jobTitle, city, company, usecase, message });
     return NextResponse.json({ ok: true });
   }
 
@@ -29,6 +29,9 @@ export async function POST(req: Request) {
       html: `
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "—"}</p>
+        <p><strong>Job title:</strong> ${jobTitle || "—"}</p>
+        <p><strong>City:</strong> ${city || "—"}</p>
         <p><strong>Company:</strong> ${company || "—"}</p>
         <p><strong>Use case:</strong> ${usecase || "—"}</p>
         <p><strong>Message:</strong><br/>${message || "—"}</p>
