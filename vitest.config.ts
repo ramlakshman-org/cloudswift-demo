@@ -22,6 +22,15 @@ export default defineConfig({
         "src/**/*.d.ts",
         "src/types/**",
         "src/**/*.test.{ts,tsx}",
+        // Vendored shadcn/ui primitives (generated via `npx shadcn add`), not
+        // first-party code. They ship variants/features (radio groups, the
+        // sidebar's floating/icon-collapse modes, etc.) this app never uses —
+        // covering every branch would mean testing paths with no real usage.
+        "src/components/ui/**",
+        // Vendored alongside the Sidebar primitive (also via shadcn CLI),
+        // same reasoning — its matchMedia listener cleanup path isn't
+        // exercised by any real interaction in this app.
+        "src/hooks/use-mobile.ts",
       ],
       thresholds: {
         lines: 100,
