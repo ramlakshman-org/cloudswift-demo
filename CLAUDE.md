@@ -8,7 +8,7 @@ Marketing site for CloudSwift — ISO 9001-2015 certified cloud & IT managed ser
 - Not yet connected to Vercel — deploy is still pending
 - `RESEND_API_KEY` env var required for the contact form (`/api/contact`) to actually send mail; without it, submissions just log to the server console
 - `MONGODB_URI` / `MONGODB_DB` required for `/api/contact` to persist enquiries (and for `/admin` to show anything); without `MONGODB_URI`, `insertEnquiry()` logs and no-ops, same dev-fallback pattern as Resend
-- `ADMIN_PASSWORD` required for `/admin` login to ever succeed; `ADMIN_SESSION_SECRET` should be set separately in production (falls back to `ADMIN_PASSWORD` if unset)
+- `ADMIN_PASSWORD` required for `/admin` login to ever succeed; `ADMIN_USERNAME` defaults to `admin` if unset; `ADMIN_SESSION_SECRET` should be set separately in production (falls back to `ADMIN_PASSWORD` if unset)
 
 ## Commands
 
@@ -62,10 +62,22 @@ Next.js **replaces, not merges**, a page's `openGraph`/`twitter` metadata object
 
 - `src/lib/mongodb.ts` caches the `MongoClient` connection on `global.__mongoClientPromise` — without this, every serverless cold start (and every dev HMR reload) would open a fresh connection pool instead of reusing one.
 - `src/lib/enquiries.ts` is the data layer: `insertEnquiry` (called from `/api/contact` and `/api/assessment`), `listEnquiries` (filter by category/status/search), `updateEnquiryStatus`. `ENQUIRY_CATEGORIES` mirrors the `usecase` dropdown options in `BookingForm.tsx` — keep them in sync if that dropdown changes.
-- `/admin` is a password-gated dashboard (`EnquiriesTable.tsx`) for triaging enquiries by category/status with inline status updates. Auth is a single shared password, not per-user accounts — by explicit choice (small team, fastest to ship), not an oversight.
+- `/admin` is gated by a single shared master username/password, not per-user accounts — by explicit choice (small team, fastest to ship), not an oversight. `src/lib/auth.ts`'s `checkAdminCredentials(username, password)` checks both against `ADMIN_USERNAME` (default `"admin"`) and `ADMIN_PASSWORD` with a timing-safe comparison.
 - `src/lib/auth.ts` signs session tokens with Web Crypto (`crypto.subtle`), not `node:crypto` — this lets the exact same signing code run in both `middleware.ts` (Edge runtime) and the Node API routes without a runtime-specific branch.
 - `src/proxy.ts` (Next 16's renamed `middleware.ts` convention — the file must be named `proxy.ts` exporting a `proxy` function, not `middleware.ts`/`middleware`) guards `/admin/*` and `/api/admin/*` (except the login routes) — redirects to `/admin/login` for pages, returns 401 JSON for API routes.
 - `/admin` is excluded from `robots.ts` for every listed user-agent group, not just `*` — per the robots.txt spec, a crawler matching a specific named group (e.g. `GPTBot`) ignores the `*` group entirely, so the disallow has to be repeated per agent or it's a no-op for any bot with its own group.
+
+## Admin UI (shadcn-admin style)
+
+`/admin` was rebuilt from a single plain-table page into a shadcn-admin-style dashboard, per explicit user request to match https://github.com/satnaing/shadcn-admin. This pulled in real shadcn/ui primitives (not hand-rolled): `Sidebar`, `Table`, `Badge`, `Avatar`, `Select`, `DropdownMenu`, `Sheet`, `Card` — added via `npx shadcn@latest add <name>` — plus `@tanstack/react-table` for the data grid.
+
+- Route structure: `src/app/admin/(dashboard)/` is a route group (no URL segment) holding `layout.tsx` (the `SidebarProvider` + `AdminSidebar` shell) and two pages — `page.tsx` (`/admin`, stat cards + recent list) and `enquiries/page.tsx` (`/admin/enquiries`, the full `EnquiriesDataTable`). `src/app/admin/login/page.tsx` stays a sibling outside the group, so it renders without the sidebar.
+- `EnquiriesDataTable.tsx` replaced the old `EnquiriesTable.tsx` (deleted). Filtering/sorting/pagination/column-visibility all run through TanStack Table; row "View" opens `EnquiryDetailSheet.tsx` (a side panel) instead of an inline expand-row — status changes happen there, not in the table itself.
+- `src/components/admin/badges.tsx` (`StatusBadge`, `SourceBadge`) is the single place status/source color-coding lives — used by both the dashboard's recent list and the data table.
+- **Test gotcha**: Base UI's `Select` (`@base-ui/react/select`, what shadcn's `select.tsx` wraps) only commits a clicked option if that option is already internally "highlighted" — real mouse hovering sets this via `onMouseMove` before the click; a synthetic `fireEvent.click()` alone is a no-op (confirmed by reading `SelectItem.js`'s `onClick`/`onMouseUp` handlers directly). Tests must fire `fireEvent.mouseMove(option)` immediately before `fireEvent.click(option)` — see the `selectOption()` helper in `EnquiriesDataTable.test.tsx`.
+- `vitest.config.ts` excludes `src/components/ui/**` and `src/hooks/use-mobile.ts` from the 100% coverage requirement — these are vendored shadcn-generated files, not first-party code, and ship variants (radio-group items, the sidebar's floating/icon-collapse modes) this app never uses.
+- `.admin-theme` (in `globals.css`) overrides `--background`/`--card`/`--secondary`/`--muted`/etc. to a neutral oklch grayscale, applied via `className="admin-theme"` on the `(dashboard)/layout.tsx`'s `SidebarProvider`. Without it, the dashboard inherits CloudSwift's blue-tinted `--background` (`#eef4ff`) used everywhere else on the marketing site, which doesn't read as a neutral admin tool.
+- **`/admin/login` deliberately does NOT use `.admin-theme`** — by explicit user decision, the login screen uses the marketing site's actual brand styling (`bg-cream`, `bg-rust` button, the real `Logo` component from `src/components/icons.tsx`) since it's the public-facing gateway people see before they're inside the tool. Only the post-login dashboard pages (`/admin`, `/admin/enquiries`) use the neutral shadcn-admin theme. Don't "fix" this inconsistency without asking — it's intentional, not a missed override.
 
 ## Assessment wizard (no Cal.com)
 

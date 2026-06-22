@@ -1,22 +1,26 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import {
-  checkAdminPassword,
+  checkAdminCredentials,
   createSessionToken,
   verifySessionToken,
   ADMIN_SESSION_COOKIE,
 } from "./auth";
 
 describe("auth", () => {
+  const originalUsername = process.env.ADMIN_USERNAME;
   const originalPassword = process.env.ADMIN_PASSWORD;
   const originalSecret = process.env.ADMIN_SESSION_SECRET;
 
   beforeEach(() => {
+    delete process.env.ADMIN_USERNAME;
     process.env.ADMIN_PASSWORD = "correct-password";
     delete process.env.ADMIN_SESSION_SECRET;
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    if (originalUsername === undefined) delete process.env.ADMIN_USERNAME;
+    else process.env.ADMIN_USERNAME = originalUsername;
     if (originalPassword === undefined) delete process.env.ADMIN_PASSWORD;
     else process.env.ADMIN_PASSWORD = originalPassword;
     if (originalSecret === undefined) delete process.env.ADMIN_SESSION_SECRET;
@@ -27,22 +31,31 @@ describe("auth", () => {
     expect(ADMIN_SESSION_COOKIE).toBe("cs_admin_session");
   });
 
-  describe("checkAdminPassword", () => {
-    it("returns true for the correct password", () => {
-      expect(checkAdminPassword("correct-password")).toBe(true);
+  describe("checkAdminCredentials", () => {
+    it("returns true for the default username (admin) and correct password", () => {
+      expect(checkAdminCredentials("admin", "correct-password")).toBe(true);
+    });
+
+    it("returns true for a custom ADMIN_USERNAME", () => {
+      process.env.ADMIN_USERNAME = "ram";
+      expect(checkAdminCredentials("ram", "correct-password")).toBe(true);
+    });
+
+    it("returns false for the wrong username", () => {
+      expect(checkAdminCredentials("wrong-user", "correct-password")).toBe(false);
     });
 
     it("returns false for an incorrect password", () => {
-      expect(checkAdminPassword("wrong-password")).toBe(false);
+      expect(checkAdminCredentials("admin", "wrong-password")).toBe(false);
     });
 
     it("returns false for a password of a different length", () => {
-      expect(checkAdminPassword("short")).toBe(false);
+      expect(checkAdminCredentials("admin", "short")).toBe(false);
     });
 
     it("returns false when ADMIN_PASSWORD is unset", () => {
       delete process.env.ADMIN_PASSWORD;
-      expect(checkAdminPassword("anything")).toBe(false);
+      expect(checkAdminCredentials("admin", "anything")).toBe(false);
     });
   });
 

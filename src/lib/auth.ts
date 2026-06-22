@@ -25,10 +25,13 @@ async function sign(payload: string): Promise<string> {
   return Buffer.from(signature).toString("base64url");
 }
 
-export function checkAdminPassword(password: string): boolean {
-  const expected = process.env.ADMIN_PASSWORD;
-  if (!expected) return false;
-  return timingSafeEqual(password, expected);
+const DEFAULT_ADMIN_USERNAME = "admin";
+
+export function checkAdminCredentials(username: string, password: string): boolean {
+  const expectedUsername = process.env.ADMIN_USERNAME || DEFAULT_ADMIN_USERNAME;
+  const expectedPassword = process.env.ADMIN_PASSWORD;
+  if (!expectedPassword) return false;
+  return timingSafeEqual(username, expectedUsername) && timingSafeEqual(password, expectedPassword);
 }
 
 function timingSafeEqual(a: string, b: string): boolean {

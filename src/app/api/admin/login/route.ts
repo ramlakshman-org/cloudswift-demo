@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
-import { ADMIN_SESSION_COOKIE, checkAdminPassword, createSessionToken } from "@/lib/auth";
+import { ADMIN_SESSION_COOKIE, checkAdminCredentials, createSessionToken } from "@/lib/auth";
 
 export async function POST(req: Request) {
-  const { password } = await req.json();
+  const { username, password } = await req.json();
 
-  if (typeof password !== "string" || !checkAdminPassword(password)) {
-    return NextResponse.json({ ok: false, error: "Incorrect password" }, { status: 401 });
+  if (
+    typeof username !== "string" ||
+    typeof password !== "string" ||
+    !checkAdminCredentials(username, password)
+  ) {
+    return NextResponse.json({ ok: false, error: "Incorrect username or password" }, { status: 401 });
   }
 
   const token = await createSessionToken();
